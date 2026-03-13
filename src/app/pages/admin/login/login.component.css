@@ -1,0 +1,236 @@
+/* =========================================================================
+   X.COMPANY REPLICATION — ADMIN LOGIN
+   ========================================================================= */
+
+:host {
+    display: block;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    font-family: var(--font);
+}
+
+.x-login-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+/* =========================================
+   LEFT PANEL — Brand
+   ========================================= */
+.x-login-brand {
+    background: #090909;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: flex-end;
+    padding: 8vh 6vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.x-login-brand-inner {
+    position: relative;
+    z-index: 10;
+}
+
+.x-brand-headline {
+    font-size: clamp(3rem, 6vw, 8rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    margin-bottom: 2rem;
+}
+
+.x-brand-sub {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    opacity: 0.4;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    margin-bottom: 3rem;
+}
+
+.x-security-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.x-sec-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    width: fit-content;
+}
+
+.x-sec-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.x-sec-dot.green {
+    background: #39B54A;
+    box-shadow: 0 0 10px rgba(57, 181, 74, 0.4);
+}
+
+.x-brand-glow-1,
+.x-brand-glow-2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.x-brand-glow-1 {
+    width: 50vw; height: 50vw;
+    background: #27AAE1;
+    top: -10%; left: -10%;
+}
+
+.x-brand-glow-2 {
+    width: 30vw; height: 30vw;
+    background: #EF4136;
+    bottom: -5%; right: -5%;
+}
+
+/* =========================================
+   RIGHT PANEL — Form
+   ========================================= */
+.x-login-form-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8vh 6vw;
+    background: #000;
+}
+
+.x-login-form-inner {
+    width: 100%;
+    max-width: 440px;
+}
+
+.x-login-title {
+    font-size: clamp(3rem, 5vw, 6rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    margin: 0 0 1rem 0;
+}
+
+.x-login-sub {
+    font-size: 1rem;
+    opacity: 0.4;
+    margin-bottom: 4rem;
+    letter-spacing: 0;
+}
+
+/* Form Fields */
+.x-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 2.5rem;
+}
+
+.x-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+}
+
+.x-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    font-family: var(--font);
+    font-size: 1.1rem;
+    padding: 0.75rem 0;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.25s ease;
+    border-radius: 0;
+}
+
+.x-input::placeholder { color: rgba(255,255,255,0.15); }
+.x-input:focus { border-bottom-color: rgba(255,255,255,0.6); }
+
+/* Error state */
+.x-login-error {
+    font-size: 0.85rem;
+    color: #EF4136;
+    margin-bottom: 1.5rem;
+    padding: 12px 0;
+    border-top: 1px solid rgba(239,65,54,0.2);
+}
+
+/* Button */
+.x-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    cursor: pointer;
+    font-family: var(--font);
+    transition: background 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+}
+
+.x-btn:hover:not(:disabled) {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+.x-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.x-login-btn {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+/* Back link */
+.x-login-footer { margin-top: 1rem; }
+
+.x-back-link {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.x-back-link:hover { color: #fff; }
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 900px) {
+    .x-login-container { grid-template-columns: 1fr; }
+    .x-login-brand {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        padding: 8vh 5vw;
+        min-height: 35vh;
+    }
+}

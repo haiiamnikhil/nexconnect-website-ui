@@ -1,0 +1,223 @@
+/* =========================================================================
+   X.COMPANY REPLICATION — COMING SOON
+   ========================================================================= */
+
+:host {
+    display: block;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
+    font-family: var(--font);
+}
+
+.x-soon-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* =========================================
+   HERO CONTENT
+   ========================================= */
+.x-soon-inner {
+    padding: 15vh 5vw 5vh;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 80vh;
+}
+
+.x-soon-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.35);
+    display: block;
+    margin-bottom: 3vh;
+}
+
+.x-soon-headline {
+    font-size: clamp(5rem, 16vw, 18rem);
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+    margin: 0 0 5vh 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.x-line { display: block; }
+
+.x-soon-desc {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    max-width: 600px;
+    line-height: 1.4;
+    opacity: 0.6;
+    margin-bottom: 5vh;
+    letter-spacing: -0.01em;
+}
+
+.x-soon-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* =========================================
+   BUTTONS (local)
+   ========================================= */
+.x-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    cursor: pointer;
+    font-family: var(--font);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.x-btn:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+.x-btn.outline {
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    border-color: rgba(255,255,255,0.2);
+}
+
+/* =========================================
+   ABSTRACT BACKGROUND GLOWS
+   ========================================= */
+.x-soon-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.x-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.3;
+}
+
+.x-glow-1 {
+    width: 50vw;
+    height: 50vw;
+    background: #27AAE1;
+    top: -20%;
+    left: -15%;
+}
+
+.x-glow-2 {
+    width: 40vw;
+    height: 40vw;
+    background: #EF4136;
+    bottom: -10%;
+    right: -10%;
+}
+
+/* =========================================
+   ROADMAP
+   ========================================= */
+.x-roadmap {
+    position: relative;
+    z-index: 10;
+    padding: 10vh 5vw;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    background: #020202;
+}
+
+.x-roadmap-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.4);
+    margin: 0 0 3rem;
+}
+
+.x-roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.x-road-item {
+    background: #000;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.x-road-status {
+    font-family: monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    align-self: flex-start;
+}
+
+.x-road-status.done {
+    background: rgba(57, 181, 74, 0.1);
+    color: #39B54A;
+    border: 1px solid #39B54A;
+}
+
+.x-road-status.wip {
+    background: rgba(247, 147, 30, 0.1);
+    color: #F7931E;
+    border: 1px solid #F7931E;
+}
+
+.x-road-status.pending {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.x-road-item p {
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .x-roadmap-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.x-soon-footer {
+    padding: 4vh 5vw;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.25);
+    position: relative;
+    z-index: 10;
+}

@@ -1,0 +1,163 @@
+<!-- ===== X.COMPANY HOMEPAGE — NexConnect ===== -->
+<div class="x-factory-container">
+
+    <!-- Hero Sequence - Pinned via GSAP -->
+    <section class="x-hero">
+        <div class="x-hero-sticky">
+            <div class="x-headline">
+                <span class="x-line">NexConnect,</span>
+                <span class="x-line">The Software</span>
+                <span class="x-line">Factory.</span>
+            </div>
+            <!-- Abstract color blobs -->
+            <div class="x-hero-canvas" id="hero-bg-canvas">
+                <div class="x-blob x-blob-1"></div>
+                <div class="x-blob x-blob-2"></div>
+            </div>
+            <!-- CTA inline in hero -->
+            <div class="x-hero-cta">
+                <a routerLink="/products" class="x-btn primary">Explore Products →</a>
+                <a routerLink="/contact" class="x-btn outline">Request a Demo</a>
+            </div>
+            <div class="x-scroll-indicator">
+                <span>Scroll to explore</span>
+                <div class="x-line-down"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Strip -->
+    <section class="x-stats-strip">
+        <div class="x-stat">
+            <span class="x-stat-n">1,000+</span>
+            <span class="x-stat-l">Business Clients</span>
+        </div>
+        <div class="x-stat-rule"></div>
+        <div class="x-stat">
+            <span class="x-stat-n">5</span>
+            <span class="x-stat-l">Products</span>
+        </div>
+        <div class="x-stat-rule"></div>
+        <div class="x-stat">
+            <span class="x-stat-n">15+</span>
+            <span class="x-stat-l">Countries</span>
+        </div>
+        <div class="x-stat-rule"></div>
+        <div class="x-stat">
+            <span class="x-stat-n">99.9%</span>
+            <span class="x-stat-l">Uptime SLA</span>
+        </div>
+    </section>
+
+    <!-- Narrative sequence — text scrubbed via GSAP ScrollTrigger -->
+    <section class="x-narrative">
+        <div class="x-narrative-content">
+            <h2 class="x-huge-text" id="narrative-text">
+                We build enterprise software that powers HR, sales, operations, and collaboration.
+            </h2>
+        </div>
+    </section>
+
+    <!-- Products Suite — GSAP card stacking -->
+    <section class="x-suite">
+        <div class="x-suite-sticky">
+            <div class="x-suite-header">
+                <h2>Five products.<br>One platform.</h2>
+            </div>
+            <div class="x-suite-cards">
+                <a *ngFor="let p of products; let i = index" [routerLink]="['/products', p.id]" class="x-product-card"
+                    [id]="'product-card-' + i" [style.background-color]="p.name === 'Trendzo' ? '#EF4136' : '#111'">
+                    <div class="x-prod-num">{{ (i + 1).toString().padStart(2, '0') }}</div>
+                    <h3 class="x-prod-name">{{ p.name }}</h3>
+                    <p class="x-prod-desc">{{ p.description }}</p>
+                    <div class="x-prod-arrow">→</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trendzo feature — Brutalist red split -->
+    <section class="x-trendzo">
+        <div class="x-trendzo-container">
+            <div class="x-trendzo-text">
+                <span class="x-label">B2C Flagship</span>
+                <h2 class="x-massive-trendzo">Trendzo.</h2>
+                <p class="x-trendzo-desc">Our fashion delivery app loved by millions. AI-powered style picks, same-day
+                    delivery, 500+ brands.</p>
+                <a routerLink="/products" class="x-btn">Explore Trendzo</a>
+            </div>
+            <div class="x-trendzo-visual">
+                <div class="x-phone-mockup">
+                    <div class="x-screen"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process — Typographical numbered list -->
+    <section class="x-process">
+        <div class="x-process-container">
+            <h2 class="x-process-title">How we start</h2>
+
+            <div class="x-process-step">
+                <div class="x-step-num">01</div>
+                <div class="x-step-text">Choose your products from our suite.</div>
+            </div>
+
+            <div class="x-process-step">
+                <div class="x-step-num">02</div>
+                <div class="x-step-text">Guided onboarding &amp; data migration.</div>
+            </div>
+
+            <div class="x-process-step">
+                <div class="x-step-num">03</div>
+                <div class="x-step-text">Go live with 24/7 technical support.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manifesto / Philosophy -->
+    <section class="x-manifesto">
+        <div class="x-manifesto-content">
+            <span class="x-label">Our Philosophy</span>
+            <h2 class="x-manifesto-huge">Software should get out of the way.</h2>
+            <div class="x-manifesto-grid">
+                <div class="x-manifesto-block">
+                    <h3>Zero friction.</h3>
+                    <p>We eliminate unnecessary clicks, endless loading screens, and cluttered interfaces. Every tool is
+                        designed for absolute efficiency.</p>
+                </div>
+                <div class="x-manifesto-block">
+                    <h3>Absolute scale.</h3>
+                    <p>Whether you're moving 100 orders a day or 100,000, our underlying architecture scales elastically
+                        without you ever noticing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Roster -->
+    <section class="x-clients">
+        <h2 class="x-clients-title">Trusted by industry leaders</h2>
+        <div class="x-clients-grid">
+            <div class="x-client-box">Acme Corp</div>
+            <div class="x-client-box">Stark Ind.</div>
+            <div class="x-client-box">Wayne Ent.</div>
+            <div class="x-client-box">Massive Dynamic</div>
+            <div class="x-client-box">Cyberdyne</div>
+            <div class="x-client-box">Initech</div>
+            <div class="x-client-box">Soylent</div>
+            <div class="x-client-box">Umbrella Corp</div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="x-cta">
+        <h2 class="x-cta-headline">Ready.</h2>
+        <div class="x-cta-actions">
+            <a routerLink="/products" class="x-btn primary">Start Free Trial</a>
+            <a routerLink="/contact" class="x-btn outline">Schedule Demo</a>
+        </div>
+    </section>
+
+</div>

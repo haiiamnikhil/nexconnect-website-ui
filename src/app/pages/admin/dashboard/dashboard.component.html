@@ -1,0 +1,268 @@
+<div class="x-dashboard-container">
+
+    <!-- Sidebar -->
+    <aside class="x-sidebar">
+        <div class="x-sidebar-brand">NC</div>
+        <nav class="x-sidebar-nav">
+            <button class="x-nav-item" [class.active]="activeView === 'overview'" (click)="setView('overview')">
+                <span class="x-nav-icon">◈</span>
+                <span>Overview</span>
+            </button>
+            <button class="x-nav-item" [class.active]="activeView === 'products'" (click)="setView('products')">
+                <span class="x-nav-icon">⊡</span>
+                <span>Products</span>
+            </button>
+            <button class="x-nav-item" [class.active]="activeView === 'users'" (click)="setView('users')">
+                <span class="x-nav-icon">⊕</span>
+                <span>Users</span>
+            </button>
+            <button class="x-nav-item" [class.active]="activeView === 'messages'" (click)="setView('messages')">
+                <span class="x-nav-icon">◎</span>
+                <span>Messages</span>
+            </button>
+            <button class="x-nav-item" [class.active]="activeView === 'analytics'" (click)="setView('analytics')">
+                <span class="x-nav-icon">⊘</span>
+                <span>Analytics</span>
+            </button>
+        </nav>
+        <a routerLink="/" class="x-sidebar-exit">← Exit</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="x-dashboard-main">
+
+        <!-- ===== OVERVIEW ===== -->
+        <ng-container *ngIf="activeView === 'overview'">
+            <header class="x-dash-header">
+                <div class="x-dash-title">
+                    <span class="x-dash-label">Overview</span>
+                    <h1>Dashboard.</h1>
+                </div>
+                <div class="x-dash-time">{{ today }}</div>
+            </header>
+
+            <div class="x-metrics-grid">
+                <div class="x-metric-card">
+                    <div class="x-metric-label">Total Products</div>
+                    <div class="x-metric-value">{{ products.length }}</div>
+                    <div class="x-metric-delta positive">↑ Active Suite</div>
+                </div>
+                <div class="x-metric-card">
+                    <div class="x-metric-label">Messages</div>
+                    <div class="x-metric-value">{{ contacts.length }}</div>
+                    <div class="x-metric-delta positive">↑ Inbox</div>
+                </div>
+                <div class="x-metric-card">
+                    <div class="x-metric-label">Uptime SLA</div>
+                    <div class="x-metric-value">99.9%</div>
+                    <div class="x-metric-delta neutral">→ On Target</div>
+                </div>
+                <div class="x-metric-card">
+                    <div class="x-metric-label">Countries</div>
+                    <div class="x-metric-value">15+</div>
+                    <div class="x-metric-delta positive">↑ Expanding</div>
+                </div>
+            </div>
+
+            <section class="x-data-section">
+                <div class="x-section-header">
+                    <h2 class="x-section-title">Product Suite</h2>
+                    <a routerLink="/products" class="x-btn">View Public →</a>
+                </div>
+                <table class="x-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Tag</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let p of products.slice(0, 5)">
+                            <td>{{ p.id }}</td>
+                            <td>{{ p.name }}</td>
+                            <td><span class="x-badge green">{{ p.tag || 'Live' }}</span></td>
+                            <td>${{ p.price }}</td>
+                        </tr>
+                        <tr *ngIf="products.length === 0">
+                            <td colspan="4" style="text-align: center; opacity: 0.5;">No products found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </ng-container>
+
+        <!-- ===== PRODUCTS (CRUD) ===== -->
+        <ng-container *ngIf="activeView === 'products'">
+            <header class="x-dash-header">
+                <div class="x-dash-title">
+                    <span class="x-dash-label">Catalog & Editor</span>
+                    <h1>Products.</h1>
+                </div>
+            </header>
+
+            <!-- Product Form -->
+            <div class="x-crud-form">
+                <div class="x-form-header">
+                    <h3>{{ isEditing ? 'Edit Product: ' + currentProduct.name : 'Create New Product' }}</h3>
+                    <button *ngIf="isEditing" (click)="cancelEdit()" class="x-btn outline">Cancel</button>
+                </div>
+                <form (ngSubmit)="saveProduct()">
+                    <div class="x-form-grid">
+                        <div class="x-field">
+                            <label class="x-label">Name</label>
+                            <input class="x-input" [(ngModel)]="currentProduct.name" name="name" required>
+                        </div>
+                        <div class="x-field">
+                            <label class="x-label">Price</label>
+                            <input class="x-input" type="number" [(ngModel)]="currentProduct.price" name="price"
+                                required>
+                        </div>
+                        <div class="x-field">
+                            <label class="x-label">Tag (e.g. Enterprise)</label>
+                            <input class="x-input" [(ngModel)]="currentProduct.tag" name="tag">
+                        </div>
+                        <div class="x-field">
+                            <label class="x-label">Accent Color (Hex)</label>
+                            <input class="x-input" [(ngModel)]="currentProduct.accent_color" name="accent_color"
+                                placeholder="#EF4136">
+                        </div>
+                    </div>
+                    <div class="x-field">
+                        <label class="x-label">Image URL</label>
+                        <input class="x-input" [(ngModel)]="currentProduct.image_url" name="image_url">
+                    </div>
+                    <div class="x-field">
+                        <label class="x-label">Description</label>
+                        <textarea class="x-input" [(ngModel)]="currentProduct.description" name="description"
+                            rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="x-btn" style="margin-top: 1rem;">
+                        {{ isEditing ? 'Save Changes' : 'Create Product' }}
+                    </button>
+                </form>
+            </div>
+
+            <!-- Product Table -->
+            <table class="x-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Tag</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of products">
+                        <td>{{ p.id }}</td>
+                        <td>{{ p.name }}</td>
+                        <td><span class="x-badge green">{{ p.tag }}</span></td>
+                        <td>${{ p.price }}</td>
+                        <td class="x-actions-cell">
+                            <button class="x-btn outline text-sm" (click)="editProduct(p)">Edit</button>
+                            <button class="x-btn outline text-sm" (click)="deleteProduct(p.id)"
+                                style="border-color: rgba(239,65,54,0.3); color: #EF4136;">Delete</button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="products.length === 0">
+                        <td colspan="5" style="text-align: center; opacity: 0.5;">No products found</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+
+        <!-- ===== USERS ===== -->
+        <ng-container *ngIf="activeView === 'users'">
+            <header class="x-dash-header">
+                <div class="x-dash-title">
+                    <span class="x-dash-label">Directory</span>
+                    <h1>Users.</h1>
+                </div>
+                <div class="x-dash-time">Showing {{ users.length }} entries</div>
+            </header>
+
+            <table class="x-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let u of users">
+                        <td>{{ u.id }}</td>
+                        <td style="font-weight:600">{{ u.username }}</td>
+                        <td><span class="x-badge green" style="border-color: rgba(255,255,255,0.3); color: #fff;">Super
+                                Admin</span></td>
+                    </tr>
+                    <tr *ngIf="users.length === 0">
+                        <td colspan="3" style="text-align: center; opacity: 0.5;">No users found</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+
+        <!-- ===== MESSAGES ===== -->
+        <ng-container *ngIf="activeView === 'messages'">
+            <header class="x-dash-header">
+                <div class="x-dash-title">
+                    <span class="x-dash-label">Inbox</span>
+                    <h1>Messages.</h1>
+                </div>
+                <div class="x-dash-time">Showing {{ contacts.length }} entries</div>
+            </header>
+
+            <table class="x-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of contacts">
+                        <td style="white-space:nowrap">{{ c.created_at | date:'shortDate' }}</td>
+                        <td style="font-weight:600">{{ c.name }}</td>
+                        <td>{{ c.email }}</td>
+                        <td
+                            style="opacity:0.7; max-width:400px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                            {{ c.message }}</td>
+                    </tr>
+                    <tr *ngIf="contacts.length === 0">
+                        <td colspan="4" style="text-align: center; opacity: 0.5;">No messages received</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+
+        <!-- ===== ANALYTICS ===== -->
+        <ng-container *ngIf="activeView === 'analytics'">
+            <header class="x-dash-header">
+                <div class="x-dash-title">
+                    <span class="x-dash-label">Insights</span>
+                    <h1>Analytics.</h1>
+                </div>
+                <div class="x-dash-time">{{ today }}</div>
+            </header>
+            <div class="x-metrics-grid">
+                <div class="x-metric-card">
+                    <div class="x-metric-label">Monthly Visitors</div>
+                    <div class="x-metric-value">—</div>
+                    <div class="x-metric-delta neutral">→ Connect Analytics</div>
+                </div>
+                <div class="x-metric-card">
+                    <div class="x-metric-label">Conversion Rate</div>
+                    <div class="x-metric-value">—</div>
+                    <div class="x-metric-delta neutral">→ Connect Analytics</div>
+                </div>
+            </div>
+        </ng-container>
+
+    </main>
+</div>

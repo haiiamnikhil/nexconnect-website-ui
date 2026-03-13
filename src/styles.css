@@ -1,1 +1,127 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;700&family=Google+Sans+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* NexConnect Brand & Extended Palette */
+  --red:    #EF4136;
+  --green:  #39B54A;
+  --blue:   #27AAE1;
+  --orange: #F7931E;
+  --indigo: #3f51b5;
+  --teal:   #009688;
+  --emerald:#10b981;
+  --amber:  #ff9800;
+  --pink:   #e91e63;
+  --cyan:   #00bcd4;
+  --lime:   #cddc39;
+  --deep-orange: #ff5722;
+  --dark:   #231F20;
+  --white:  #FFFFFF;
+
+  /* Semantic */
+  --primary:      var(--blue);
+  --accent:       var(--orange);
+  --success:      var(--green);
+  --text:         var(--white);
+  --text-light:   rgba(255,255,255,0.65);
+  --text-muted:   rgba(255,255,255,0.4);
+  --bg:           #000000;
+  --bg-dark:      #000000;
+  --border:       rgba(255,255,255,0.1);
+  --border-dark:  rgba(255,255,255,0.1);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.6);
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* x.company-exact font stack */
+  --font: "Google Sans", "Inter", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: #000000;
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ===== UTILITY ===== */
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* ===== SKELETON ===== */
+.skeleton {
+  background: #1a1a1a;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  animation: skelShimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes skelShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.skeleton-img    { height: 200px; width: 100%; }
+.skeleton-title  { height: 22px; width: 65%; margin-bottom: 12px; }
+.skeleton-text   { height: 13px; width: 100%; margin-bottom: 8px; }
+.skeleton-text.short { width: 45%; }
+.skeleton-btn    { height: 40px; width: 36%; margin-top: 16px; }
+.skeleton-card   { pointer-events: none; overflow: hidden; }
+
+/* Page fade-in */
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-loaded { animation: pageFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) both; }
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.visible { transition: none; transform: none; opacity: 1; }
+  .page-loaded { animation: none; }
+}
