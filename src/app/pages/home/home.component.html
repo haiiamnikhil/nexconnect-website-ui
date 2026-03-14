@@ -1,100 +1,178 @@
-<div class="ag-home-container">
+<div class="saas-home-container">
 
-    <!-- HERO SECTION -->
-    <section class="ag-hero relative-container">
-        <div class="container h-full flex flex-col justify-end pb-lg">
-            <h1 class="ag-massive-title reveal-up">
-                <span class="block">BUILD.</span>
-                <span class="block delay-100">SCALE.</span>
-                <span class="block delay-200">DEFY.</span>
-            </h1>
+    <!-- MODERN SAAS HERO -->
+    <section class="saas-hero">
+        <div class="container hero-grid">
+            <div class="hero-content reveal-up">
+                <div class="hero-chip">
+                    <span class="pulse-dot"></span>
+                    NexConnect Platform 2.0 is Live
+                </div>
+                <h1 class="hero-title">
+                    Digital Operations, <br>
+                    <span class="text-gradient">Unified & Scaled.</span>
+                </h1>
+                <p class="hero-desc">
+                    The ultimate enterprise infrastructure for modern product teams. Strip away the chaos and build with
+                    absolute clarity and performance.
+                </p>
+                <div class="hero-actions">
+                    <a routerLink="/products" class="btn-primary">Explore Platform</a>
+                    <a href="#" class="btn-secondary">Read Documentation</a>
+                </div>
 
-            <div class="ag-hero-desc reveal-up delay-300">
-                <p>NexConnect is the relentless software factory. <br>We engineer enterprise-grade digital velocity.</p>
-                <div class="ag-hero-actions">
-                    <a routerLink="/products" class="btn-primary">Explore Infrastructure</a>
+                <div class="hero-trusted delay-200">
+                    <p>Trusted by innovative teams worldwide</p>
+                    <div class="trusted-logos">
+                        <!-- Abstract shapes mimicking logos -->
+                        <div class="mock-logo"></div>
+                        <div class="mock-logo"></div>
+                        <div class="mock-logo"></div>
+                        <div class="mock-logo"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-graphic reveal-up delay-100">
+                <!-- Abstract Glass UI Graphic -->
+                <div class="glass-panel main-panel">
+                    <div class="panel-header">
+                        <span class="mac-dot red"></span>
+                        <span class="mac-dot yellow"></span>
+                        <span class="mac-dot green"></span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="skeleton-line w-3/4"></div>
+                        <div class="skeleton-line w-1/2"></div>
+                        <div class="skeleton-line w-full mt-lg"></div>
+                        <div class="skeleton-line w-full"></div>
+                        <div class="skeleton-line w-5/6"></div>
+                    </div>
+
+                    <!-- Floating abstract widgets -->
+                    <div class="glass-widget widget-1 shadow-float">
+                        <div class="widget-icon bg-blue">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="widget-data">
+                            <span>99.99%</span>
+                            <small>Uptime SLA</small>
+                        </div>
+                    </div>
+
+                    <div class="glass-widget widget-2 shadow-float delay-anim">
+                        <div class="widget-icon bg-green">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <div class="widget-data">
+                            <span>Scale</span>
+                            <small>Infinite</small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Abstract gradient representing 'antigravity' -->
-        <div class="ag-hero-glow"></div>
     </section>
 
-    <!-- STATS -->
-    <section class="ag-stats full-bleed">
-        <div class="container ag-stats-grid reveal-up">
-            <div class="ag-stat-item">
-                <div class="ag-stat-number">1k+</div>
-                <div class="ag-stat-label">Enterprises Scaled</div>
-            </div>
-            <div class="ag-stat-item">
-                <div class="ag-stat-number">5</div>
-                <div class="ag-stat-label">Core Systems</div>
-            </div>
-            <div class="ag-stat-item">
-                <div class="ag-stat-number">99.9%</div>
-                <div class="ag-stat-label">SLA Uptime</div>
-            </div>
-            <div class="ag-stat-item">
-                <div class="ag-stat-number">0</div>
-                <div class="ag-stat-label">Friction</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRODUCTS MARQUEE SHOWCASE -->
-    <section class="ag-products container">
-        <div class="ag-section-header">
-            <h2 class="ag-section-title reveal-up">OUR SUITE</h2>
-            <div class="divider"></div>
-        </div>
-
-        <div class="ag-products-list">
-            <a *ngFor="let p of products; let i = index" [routerLink]="['/products', p.id]"
-                class="ag-product-row reveal-up" [style.animation-delay]="(i * 100) + 'ms'">
-                <div class="ag-product-index">0{{ i + 1 }}</div>
-                <h3 class="ag-product-name">{{ p.name }}</h3>
-                <div class="ag-product-tag">{{ p.tag }}</div>
-                <div class="ag-product-arrow">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                </div>
-                <!-- Hover Reveal Image -->
-                <div class="ag-product-hover-img" [style.background-image]="'url(' + p.image_url + ')'"></div>
-            </a>
-        </div>
-    </section>
-
-    <!-- MANIFESTO -->
-    <section class="ag-manifesto full-bleed">
+    <!-- BENTO BOX FEATURES -->
+    <section class="saas-features">
         <div class="container">
-            <div class="ag-section-header">
-                <h2 class="ag-section-title reveal-up">PHILOSOPHY</h2>
-                <div class="divider"></div>
+            <div class="section-header text-center reveal-up">
+                <h2 class="section-title">The Foundation for Growth</h2>
+                <p class="section-desc">Everything you need to deploy, manage, and scale your digital infrastructure.
+                </p>
             </div>
 
-            <div class="ag-manifesto-content reveal-up delay-100">
-                <h2 class="ag-manifesto-statement">
-                    SOFTWARE SHOULD<br>BE INVISIBLE.
-                </h2>
-                <div class="ag-manifesto-body">
-                    <p>We strip away the convoluted, the unnecessary, and the chaotic. What remains is pure utility, raw
-                        performance, and absolute scale.</p>
+            <div class="bento-grid mt-xl">
+
+                <!-- Bento Item 1 (Large) -->
+                <div class="surface-card bento-item span-2 reveal-up delay-100">
+                    <div class="bento-content">
+                        <div class="bento-icon text-blue">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <h3>Global Edge Network</h3>
+                        <p>Deploy your applications instantly to over 100 edge nodes globally. Latency becomes a thing
+                            of the past.</p>
+                    </div>
+                    <div class="bento-visual bg-gradient-blue"></div>
                 </div>
+
+                <!-- Bento Item 2 -->
+                <div class="surface-card bento-item reveal-up delay-200">
+                    <div class="bento-content">
+                        <div class="bento-icon text-green">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <h3>Zero-Config Billing</h3>
+                        <p>Integrated payment gateways and subscription management out of the box.</p>
+                    </div>
+                </div>
+
+                <!-- Bento Item 3 -->
+                <div class="surface-card bento-item reveal-up delay-300">
+                    <div class="bento-content">
+                        <div class="bento-icon text-red">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3>Enterprise Security</h3>
+                        <p>Bank-grade encryption, automated compliance, and active threat mitigation.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- FINAL CTA -->
-    <section class="ag-cta container">
-        <div class="ag-cta-inner reveal-up">
-            <h2 class="ag-cta-massive">INITIATE.</h2>
-            <div class="ag-cta-controls">
-                <a routerLink="/products" class="btn-primary">View Suite</a>
-                <a routerLink="/contact" class="btn-primary"
-                    style="background: var(--text-primary); color: var(--bg-primary);">Contact Architecture Team</a>
+    <!-- METRICS (SOFT CARDS) -->
+    <section class="saas-metrics bg-secondary">
+        <div class="container metrics-grid reveal-up">
+            <div class="metric-card surface-card">
+                <div class="metric-value">1k+</div>
+                <div class="metric-label">Enterprises Scaled</div>
+            </div>
+            <div class="metric-card surface-card">
+                <div class="metric-value">99.9%</div>
+                <div class="metric-label">Uptime SLA</div>
+            </div>
+            <div class="metric-card surface-card">
+                <div class="metric-value">50ms</div>
+                <div class="metric-label">Global Latency</div>
+            </div>
+            <div class="metric-card surface-card">
+                <div class="metric-value">24/7</div>
+                <div class="metric-label">Expert Support</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLEAN CTA -->
+    <section class="saas-cta">
+        <div class="container">
+            <div class="cta-card surface-card reveal-up">
+                <div class="cta-content">
+                    <h2>Ready to scale your infrastructure?</h2>
+                    <p>Join hundreds of innovative teams building the future on NexConnect.</p>
+                    <div class="cta-actions mt-lg">
+                        <a routerLink="/contact" class="btn-primary">Contact Sales</a>
+                        <a routerLink="/products" class="btn-secondary">View Pricing</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

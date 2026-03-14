@@ -1,83 +1,135 @@
-<div class="ag-contact-wrapper">
-    <div class="container relative-container">
+<div class="saas-contact-wrapper">
+    <!-- SLANTED BACKGROUND FLUX -->
+    <div class="contact-bg-flux"></div>
 
-        <!-- HERO -->
-        <header class="ag-contact-hero reveal-up">
-            <h1 class="ag-massive-title">
-                <span class="block">CONNECT</span>
-            </h1>
-            <p class="ag-contact-sub">Direct access to the core engineering team.</p>
+    <div class="container saas-contact-container">
+        <!-- HEADER -->
+        <header class="contact-header text-center reveal-up">
+            <h1 class="page-title">Talk to our Team</h1>
+            <p class="section-desc mt-sm">Whether you’re exploring our platform or need architecture support, we are
+                here to help.</p>
         </header>
 
-        <!-- MAIN LAYOUT -->
-        <div class="ag-contact-split">
+        <div class="contact-grid mt-xl">
+            <!-- CONTACT INFO PANELS -->
+            <div class="contact-info-list reveal-up delay-100">
 
-            <!-- FORM COLUMN -->
-            <div class="ag-form-section">
+                <div class="info-card surface-card">
+                    <div class="info-icon text-blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>Support & Inquiries</h3>
+                        <p>mail&#64;nex-connect.in</p>
+                    </div>
+                </div>
+
+                <div class="info-card surface-card">
+                    <div class="info-icon text-green">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>Global Headquarters</h3>
+                        <p>Level 42, Sector 7<br>Tech District</p>
+                    </div>
+                </div>
+
+                <div class="info-card surface-card">
+                    <div class="info-icon text-red">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>SLA Target</h3>
+                        <p>Average response time under 2 hours for standard inquiries.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FORM PANEL -->
+            <div class="contact-form-panel surface-card reveal-up delay-200">
+
                 <!-- SUCCESS STATE -->
-                <div *ngIf="submitted" class="ag-form-success reveal-up">
-                    <h2 class="ag-massive-title">RECEIVED.</h2>
-                    <p>Our architecture team will respond within 2 hours.</p>
-                    <button (click)="resetForm()" class="btn-primary mt-lg">Initiate New Request</button>
+                <div *ngIf="submitted" class="form-success-state text-center">
+                    <div class="success-icon text-green mb-md">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Message Received</h3>
+                    <p class="text-secondary mt-sm">Our architecture team will review your request and route it
+                        immediately. Expect a reply shortly.</p>
+                    <button (click)="resetForm()" class="btn-secondary mt-lg">Send Another Message</button>
                 </div>
 
                 <!-- FORM DEFAULT STATE -->
-                <form *ngIf="!submitted" [formGroup]="contactForm" (ngSubmit)="onSubmit()"
-                    class="ag-form reveal-up delay-100">
-                    <div class="ag-field">
-                        <label for="contact_name">Identity // Name</label>
-                        <input class="ag-brutalist-input" id="contact_name"
-                            [class.has-error]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
-                            formControlName="name" placeholder="John Doe" type="text" autocomplete="off">
+                <form *ngIf="!submitted" [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="saas-form">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact_name">Full Name</label>
+                            <input type="text" id="contact_name" class="form-input"
+                                [class.input-error]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
+                                formControlName="name" placeholder="E.g. Jane Doe" autocomplete="off">
+                            <span class="error-msg"
+                                *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">Name is
+                                required</span>
+                        </div>
                     </div>
 
-                    <div class="ag-field">
-                        <label for="contact_email">Routing // Email</label>
-                        <input class="ag-brutalist-input" id="contact_email"
-                            [class.has-error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
-                            formControlName="email" placeholder="john@enterprise.com" type="email" autocomplete="off">
+                    <div class="form-group">
+                        <label for="contact_email">Work Email</label>
+                        <input type="email" id="contact_email" class="form-input"
+                            [class.input-error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+                            formControlName="email" placeholder="jane@company.com" autocomplete="off">
+                        <span class="error-msg"
+                            *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">Valid email
+                            is required</span>
                     </div>
 
-                    <div class="ag-field">
-                        <label for="contact_message">Directive // Message</label>
-                        <textarea class="ag-brutalist-input auto-resize" id="contact_message"
-                            [class.has-error]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
-                            formControlName="message" rows="3" placeholder="Specify deployment details..."
+                    <div class="form-group">
+                        <label for="contact_message">How can we help?</label>
+                        <textarea id="contact_message" class="form-input auto-resize"
+                            [class.input-error]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+                            formControlName="message" rows="4" placeholder="Tell us about your infrastructure needs..."
                             autocomplete="off"></textarea>
+                        <span class="error-msg"
+                            *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">Message
+                            is required</span>
                     </div>
 
-                    <div class="ag-form-actions">
+                    <div class="form-submit mt-md">
                         <button type="submit" [disabled]="contactForm.invalid || loading"
-                            class="btn-primary ag-submit-btn">
-                            <span *ngIf="!loading">TRANSMIT REQUEST</span>
-                            <span *ngIf="loading">TRANSMITTING...</span>
+                            class="btn-primary w-full shadow-md">
+                            <span *ngIf="!loading">Send Message</span>
+                            <span *ngIf="loading" class="btn-loading flex-center gap-sm">
+                                <svg class="spinner" viewBox="0 0 50 50" width="16" height="16">
+                                    <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                                </svg>
+                                Sending...
+                            </span>
                         </button>
                     </div>
+                    <p class="privacy-note text-center mt-md text-small text-muted">By submitting, you agree to our
+                        Privacy Policy.</p>
                 </form>
+
             </div>
-
-            <!-- INFO COLUMN -->
-            <aside class="ag-info-section reveal-up delay-200">
-                <div class="ag-info-block">
-                    <h4>COORDINATES</h4>
-                    <p>NexConnect Core<br>Level 42, Sector 7<br>Global Headquarters</p>
-                </div>
-
-                <div class="ag-info-block">
-                    <h4>CHANNELS</h4>
-                    <a href="mailto:mail@nex-connect.in">mail&#64;nex-connect.in</a>
-                </div>
-
-                <div class="ag-info-block">
-                    <h4>SLA TIERS</h4>
-                    <ul>
-                        <li><span class="highlight">STANDARD:</span> 24h Response</li>
-                        <li><span class="highlight">PRIORITY:</span> 4h Response</li>
-                        <li><span class="highlight">CRITICAL:</span> 15m Response (Dedicated Node)</li>
-                    </ul>
-                </div>
-            </aside>
-
         </div>
+
     </div>
 </div>

@@ -1,64 +1,94 @@
+<!-- TOP PROGRESS LOADER -->
 <div class="progress-bar-container" [class.visible]="isLoading">
   <div class="progress-bar"></div>
 </div>
 
-<nav class="navbar" [class.scrolled]="scrolled">
-  <div class="nav-container">
-    <a routerLink="/" class="logo-link" (click)="closeMenu()">
-      <span class="logo-text">NEXCONNECT</span>
-    </a>
+<!-- FLOATING GLASS NAV -->
+<header class="app-header">
+  <nav class="navbar glass" [class.scrolled]="scrolled">
+    <div class="nav-container">
 
-    <button class="mobile-menu-btn" (click)="toggleMenu()">
-      <div class="menu-icon-bars" [class.open]="menuOpen">
-        <span></span>
-        <span></span>
+      <!-- LOGO -->
+      <a routerLink="/" class="logo-link" (click)="closeMenu()">
+        <!-- Using original logo image -->
+        <img src="assets/nexconnect_logo_single.png" alt="NexConnect Logo" class="nav-logo-img">
+      </a>
+
+      <!-- MOBILE TOGGLE -->
+      <button class="mobile-menu-btn" (click)="toggleMenu()">
+        <div class="menu-icon-bars" [class.open]="menuOpen">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+
+      <!-- LINKS MAP -->
+      <div class="nav-links" [class.open]="menuOpen">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+          (click)="closeMenu()">Home</a>
+        <a routerLink="/products" routerLinkActive="active" (click)="closeMenu()">Products</a>
+        <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a>
+
+        <div class="nav-actions">
+          <a routerLink="/admin/login" class="btn-secondary btn-sm" (click)="closeMenu()">Sign In</a>
+          <a routerLink="/contact" class="btn-primary btn-sm" (click)="closeMenu()">Get Demo</a>
+        </div>
       </div>
-    </button>
 
-    <div class="nav-links" [class.open]="menuOpen">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-        (click)="closeMenu()">Home</a>
-      <a routerLink="/products" routerLinkActive="active" (click)="closeMenu()">Products</a>
-      <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a>
-      <a routerLink="/admin/login" class="admin-link" (click)="closeMenu()">Admin</a>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
 
-<main class="content-container">
+<!-- MAIN ROUTE WRAPPER -->
+<main class="content-container bg-primary">
   <div [@routeTransition]="getRouteState(outlet)" class="route-wrap">
     <router-outlet #outlet="outlet"></router-outlet>
   </div>
 </main>
 
-<footer class="footer">
-  <div class="footer-top">
-    <div class="footer-links-grid">
-      <div class="footer-col">
-        <span class="footer-label">EXPLORE</span>
-        <a routerLink="/products">Products</a>
-        <a routerLink="/contact">Contact</a>
-        <a routerLink="/admin/login">Admin Access</a>
+<!-- CLEAN MODERN FOOTER -->
+<footer class="modern-footer">
+  <div class="container footer-grid">
+
+    <div class="footer-brand-col">
+      <img src="assets/nexconnect_logo_single.png" alt="NexConnect Logo" class="footer-logo">
+      <p class="footer-desc">Building the unified digital operational layer for modern product teams and enterprises
+        globally.</p>
+      <div class="social-links">
+        <a href="#" aria-label="LinkedIn"><span class="material-icons">work</span></a>
+        <a href="#" aria-label="Twitter"><span class="material-icons">chat</span></a>
+        <a href="#" aria-label="GitHub"><span class="material-icons">code</span></a>
       </div>
-      <div class="footer-col">
-        <span class="footer-label">LEGAL</span>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-      </div>
-      <div class="footer-col">
-        <span class="footer-label">SOCIAL</span>
-        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-        <a href="https://twitter.com" target="_blank">Twitter / X</a>
-        <a href="https://github.com" target="_blank">GitHub</a>
-      </div>
+    </div>
+
+    <div class="footer-links-col">
+      <h4>Platform</h4>
+      <a routerLink="/products">Overview</a>
+      <a routerLink="/products">Features</a>
+      <a href="#">Integrations</a>
+      <a href="#">Pricing</a>
+    </div>
+
+    <div class="footer-links-col">
+      <h4>Company</h4>
+      <a routerLink="/contact">Contact</a>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Blog</a>
+    </div>
+
+    <div class="footer-links-col">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a routerLink="/admin/login">Admin Access</a>
     </div>
   </div>
 
-  <div class="footer-massive-brand">
-    <h1>NEXCONNECT</h1>
-  </div>
-
-  <div class="footer-bottom">
-    <p>&copy; 2026 NexConnect Technologies. All rights reserved.</p>
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 NexConnect Technologies. All rights reserved.</p>
+    </div>
   </div>
 </footer>
