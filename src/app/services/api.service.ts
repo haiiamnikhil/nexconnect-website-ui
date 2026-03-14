@@ -81,7 +81,7 @@ export class ApiService {
   ];
 
   private mockAdminUsers: AdminUser[] = [
-    { id: 1, username: 'mail@nex-connect.in' }
+    { id: 1, username: 'admin@nexconnect.io' }
   ];
 
   constructor() {}
@@ -100,7 +100,7 @@ export class ApiService {
   // --- Admin ---
   adminLogin(credentials: any): Observable<any> {
     // Static Login Validation
-    if (credentials.email === 'mail@nex-connect.in' && credentials.password === 'admin') {
+    if (credentials.email === 'admin@nexconnect.io' && credentials.password === 'admin') {
       return of({ access_token: 'static_mock_token_12345', token_type: 'bearer' }).pipe(delay(800));
     }
     return throwError(() => new Error('Invalid credentials')).pipe(delay(800));

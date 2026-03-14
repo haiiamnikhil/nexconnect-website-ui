@@ -1,94 +1,51 @@
-<!-- TOP PROGRESS LOADER -->
 <div class="progress-bar-container" [class.visible]="isLoading">
   <div class="progress-bar"></div>
 </div>
 
-<!-- FLOATING GLASS NAV -->
-<header class="app-header">
-  <nav class="navbar glass" [class.scrolled]="scrolled">
-    <div class="nav-container">
+<nav class="navbar" [class.scrolled]="scrolled">
+  <div class="logo-container">
+    <img src="nexconnect_logo_single_white.png" alt="NexConnect" class="logo">
+  </div>
+  <button class="mobile-menu-btn" (click)="toggleMenu()">
+    <span class="material-icons">{{ menuOpen ? 'close' : 'menu' }}</span>
+  </button>
 
-      <!-- LOGO -->
-      <a routerLink="/" class="logo-link" (click)="closeMenu()">
-        <!-- Using original logo image -->
-        <img src="assets/nexconnect_logo_single.png" alt="NexConnect Logo" class="nav-logo-img">
-      </a>
+  <div class="nav-links" [class.open]="menuOpen">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a>
+    <a routerLink="/products" routerLinkActive="active" (click)="closeMenu()">Products</a>
+    <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a>
+    <a routerLink="/admin/login" class="admin-link" (click)="closeMenu()">Admin</a>
+  </div>
+</nav>
 
-      <!-- MOBILE TOGGLE -->
-      <button class="mobile-menu-btn" (click)="toggleMenu()">
-        <div class="menu-icon-bars" [class.open]="menuOpen">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </button>
-
-      <!-- LINKS MAP -->
-      <div class="nav-links" [class.open]="menuOpen">
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-          (click)="closeMenu()">Home</a>
-        <a routerLink="/products" routerLinkActive="active" (click)="closeMenu()">Products</a>
-        <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a>
-
-        <div class="nav-actions">
-          <a routerLink="/admin/login" class="btn-secondary btn-sm" (click)="closeMenu()">Sign In</a>
-          <a routerLink="/contact" class="btn-primary btn-sm" (click)="closeMenu()">Get Demo</a>
-        </div>
-      </div>
-
-    </div>
-  </nav>
-</header>
-
-<!-- MAIN ROUTE WRAPPER -->
-<main class="content-container bg-primary">
+<main class="content-container">
   <div [@routeTransition]="getRouteState(outlet)" class="route-wrap">
     <router-outlet #outlet="outlet"></router-outlet>
   </div>
 </main>
 
-<!-- CLEAN MODERN FOOTER -->
-<footer class="modern-footer">
-  <div class="container footer-grid">
-
-    <div class="footer-brand-col">
-      <img src="assets/nexconnect_logo_single.png" alt="NexConnect Logo" class="footer-logo">
-      <p class="footer-desc">Building the unified digital operational layer for modern product teams and enterprises
-        globally.</p>
-      <div class="social-links">
-        <a href="#" aria-label="LinkedIn"><span class="material-icons">work</span></a>
-        <a href="#" aria-label="Twitter"><span class="material-icons">chat</span></a>
-        <a href="#" aria-label="GitHub"><span class="material-icons">code</span></a>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo-row">
+      <img src="nexconnect_logo_single_white.png" alt="NexConnect" class="footer-logo">
+    </div>
+    <div class="footer-links-row">
+      <div class="footer-group">
+        <a routerLink="/contact">Contact</a>
+        <a href="#">Press</a>
+      </div>
+      <div class="footer-group">
+        <a href="#">Privacy &amp; Terms</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer-group">
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">YouTube</a>
       </div>
     </div>
-
-    <div class="footer-links-col">
-      <h4>Platform</h4>
-      <a routerLink="/products">Overview</a>
-      <a routerLink="/products">Features</a>
-      <a href="#">Integrations</a>
-      <a href="#">Pricing</a>
-    </div>
-
-    <div class="footer-links-col">
-      <h4>Company</h4>
-      <a routerLink="/contact">Contact</a>
-      <a href="#">About Us</a>
-      <a href="#">Careers</a>
-      <a href="#">Blog</a>
-    </div>
-
-    <div class="footer-links-col">
-      <h4>Legal</h4>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a routerLink="/admin/login">Admin Access</a>
-    </div>
   </div>
-
-  <div class="container">
-    <div class="footer-bottom">
-      <p>&copy; 2026 NexConnect Technologies. All rights reserved.</p>
-    </div>
+  <div class="footer-bottom">
+    <span>NexConnect Technologies, a software company. All rights reserved.</span>
   </div>
 </footer>

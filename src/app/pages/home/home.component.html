@@ -1,179 +1,162 @@
-<div class="saas-home-container">
+<!-- ===== X.COMPANY HOMEPAGE — NexConnect ===== -->
+<div class="x-factory-container">
 
-    <!-- MODERN SAAS HERO -->
-    <section class="saas-hero">
-        <div class="container hero-grid">
-            <div class="hero-content reveal-up">
-                <div class="hero-chip">
-                    <span class="pulse-dot"></span>
-                    NexConnect Platform 2.0 is Live
-                </div>
-                <h1 class="hero-title">
-                    Digital Operations, <br>
-                    <span class="text-gradient">Unified & Scaled.</span>
-                </h1>
-                <p class="hero-desc">
-                    The ultimate enterprise infrastructure for modern product teams. Strip away the chaos and build with
-                    absolute clarity and performance.
-                </p>
-                <div class="hero-actions">
-                    <a routerLink="/products" class="btn-primary">Explore Platform</a>
-                    <a href="#" class="btn-secondary">Read Documentation</a>
-                </div>
-
-                <div class="hero-trusted delay-200">
-                    <p>Trusted by innovative teams worldwide</p>
-                    <div class="trusted-logos">
-                        <!-- Abstract shapes mimicking logos -->
-                        <div class="mock-logo"></div>
-                        <div class="mock-logo"></div>
-                        <div class="mock-logo"></div>
-                        <div class="mock-logo"></div>
-                    </div>
-                </div>
+    <!-- Hero Sequence - Pinned via GSAP -->
+    <section class="x-hero">
+        <div class="x-hero-sticky">
+            <div class="x-headline">
+                <span class="x-line">NexConnect,</span>
+                <span class="x-line">The Software</span>
+                <span class="x-line">Factory.</span>
             </div>
+            <!-- Abstract color blobs -->
+            <div class="x-hero-canvas" id="hero-bg-canvas">
+                <div class="x-blob x-blob-1"></div>
+                <div class="x-blob x-blob-2"></div>
+            </div>
+            <!-- CTA inline in hero -->
+            <div class="x-hero-cta">
+                <a routerLink="/products" class="x-btn primary">Explore Products →</a>
+                <a routerLink="/contact" class="x-btn outline">Request a Demo</a>
+            </div>
+            <div class="x-scroll-indicator">
+                <span>Scroll to explore</span>
+                <div class="x-line-down"></div>
+            </div>
+        </div>
+    </section>
 
-            <div class="hero-graphic reveal-up delay-100">
-                <!-- Abstract Glass UI Graphic -->
-                <div class="glass-panel main-panel">
-                    <div class="panel-header">
-                        <span class="mac-dot red"></span>
-                        <span class="mac-dot yellow"></span>
-                        <span class="mac-dot green"></span>
-                    </div>
-                    <div class="panel-body">
-                        <div class="skeleton-line w-3/4"></div>
-                        <div class="skeleton-line w-1/2"></div>
-                        <div class="skeleton-line w-full mt-lg"></div>
-                        <div class="skeleton-line w-full"></div>
-                        <div class="skeleton-line w-5/6"></div>
-                    </div>
+    <!-- Stats Strip -->
+    <section class="x-stats-strip">
+        <div class="x-stat">
+            <span class="x-stat-n">1,000+</span>
+            <span class="x-stat-l">Business Clients</span>
+        </div>
+        <div class="x-stat-rule"></div>
+        <div class="x-stat">
+            <span class="x-stat-n">5</span>
+            <span class="x-stat-l">Products</span>
+        </div>
+        <div class="x-stat-rule"></div>
+        <div class="x-stat">
+            <span class="x-stat-n">15+</span>
+            <span class="x-stat-l">Countries</span>
+        </div>
+        <div class="x-stat-rule"></div>
+        <div class="x-stat">
+            <span class="x-stat-n">99.9%</span>
+            <span class="x-stat-l">Uptime SLA</span>
+        </div>
+    </section>
 
-                    <!-- Floating abstract widgets -->
-                    <div class="glass-widget widget-1 shadow-float">
-                        <div class="widget-icon bg-blue">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                            </svg>
-                        </div>
-                        <div class="widget-data">
-                            <span>99.99%</span>
-                            <small>Uptime SLA</small>
-                        </div>
-                    </div>
+    <!-- Narrative sequence — text scrubbed via GSAP ScrollTrigger -->
+    <section class="x-narrative">
+        <div class="x-narrative-content">
+            <h2 class="x-huge-text" id="narrative-text">
+                We build enterprise software that powers HR, sales, operations, and collaboration.
+            </h2>
+        </div>
+    </section>
 
-                    <div class="glass-widget widget-2 shadow-float delay-anim">
-                        <div class="widget-icon bg-green">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                            </svg>
-                        </div>
-                        <div class="widget-data">
-                            <span>Scale</span>
-                            <small>Infinite</small>
-                        </div>
-                    </div>
+    <!-- Products Suite — GSAP card stacking -->
+    <section class="x-suite">
+        <div class="x-suite-sticky">
+            <div class="x-suite-header">
+                <h2>Five products.<br>One platform.</h2>
+            </div>
+            <div class="x-suite-cards">
+                <a *ngFor="let p of products; let i = index" [routerLink]="['/products', p.id]" class="x-product-card"
+                    [id]="'product-card-' + i" [style.background-color]="p.name === 'Trendzo' ? '#EF4136' : '#111'">
+                    <div class="x-prod-num">{{ (i + 1).toString().padStart(2, '0') }}</div>
+                    <h3 class="x-prod-name">{{ p.name }}</h3>
+                    <p class="x-prod-desc">{{ p.description }}</p>
+                    <div class="x-prod-arrow">→</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trendzo feature — Brutalist red split -->
+    <section class="x-trendzo">
+        <div class="x-trendzo-container">
+            <div class="x-trendzo-text">
+                <span class="x-label">B2C Flagship</span>
+                <h2 class="x-massive-trendzo">Trendzo.</h2>
+                <p class="x-trendzo-desc">Our fashion delivery app loved by millions. AI-powered style picks, same-day
+                    delivery, 500+ brands.</p>
+                <a routerLink="/products" class="x-btn">Explore Trendzo</a>
+            </div>
+            <div class="x-trendzo-visual">
+                <div class="x-phone-mockup">
+                    <div class="x-screen"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- BENTO BOX FEATURES -->
-    <section class="saas-features">
-        <div class="container">
-            <div class="section-header text-center reveal-up">
-                <h2 class="section-title">The Foundation for Growth</h2>
-                <p class="section-desc">Everything you need to deploy, manage, and scale your digital infrastructure.
-                </p>
+    <!-- Process — Typographical numbered list -->
+    <section class="x-process">
+        <div class="x-process-container">
+            <h2 class="x-process-title">How we start</h2>
+
+            <div class="x-process-step">
+                <div class="x-step-num">01</div>
+                <div class="x-step-text">Choose your products from our suite.</div>
             </div>
 
-            <div class="bento-grid mt-xl">
+            <div class="x-process-step">
+                <div class="x-step-num">02</div>
+                <div class="x-step-text">Guided onboarding &amp; data migration.</div>
+            </div>
 
-                <!-- Bento Item 1 (Large) -->
-                <div class="surface-card bento-item span-2 reveal-up delay-100">
-                    <div class="bento-content">
-                        <div class="bento-icon text-blue">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                <line x1="8" y1="21" x2="16" y2="21"></line>
-                                <line x1="12" y1="17" x2="12" y2="21"></line>
-                            </svg>
-                        </div>
-                        <h3>Global Edge Network</h3>
-                        <p>Deploy your applications instantly to over 100 edge nodes globally. Latency becomes a thing
-                            of the past.</p>
-                    </div>
-                    <div class="bento-visual bg-gradient-blue"></div>
-                </div>
-
-                <!-- Bento Item 2 -->
-                <div class="surface-card bento-item reveal-up delay-200">
-                    <div class="bento-content">
-                        <div class="bento-icon text-green">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                            </svg>
-                        </div>
-                        <h3>Zero-Config Billing</h3>
-                        <p>Integrated payment gateways and subscription management out of the box.</p>
-                    </div>
-                </div>
-
-                <!-- Bento Item 3 -->
-                <div class="surface-card bento-item reveal-up delay-300">
-                    <div class="bento-content">
-                        <div class="bento-icon text-red">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                        </div>
-                        <h3>Enterprise Security</h3>
-                        <p>Bank-grade encryption, automated compliance, and active threat mitigation.</p>
-                    </div>
-                </div>
-
+            <div class="x-process-step">
+                <div class="x-step-num">03</div>
+                <div class="x-step-text">Go live with 24/7 technical support.</div>
             </div>
         </div>
     </section>
 
-    <!-- METRICS (SOFT CARDS) -->
-    <section class="saas-metrics bg-secondary">
-        <div class="container metrics-grid reveal-up">
-            <div class="metric-card surface-card">
-                <div class="metric-value">1k+</div>
-                <div class="metric-label">Enterprises Scaled</div>
-            </div>
-            <div class="metric-card surface-card">
-                <div class="metric-value">99.9%</div>
-                <div class="metric-label">Uptime SLA</div>
-            </div>
-            <div class="metric-card surface-card">
-                <div class="metric-value">50ms</div>
-                <div class="metric-label">Global Latency</div>
-            </div>
-            <div class="metric-card surface-card">
-                <div class="metric-value">24/7</div>
-                <div class="metric-label">Expert Support</div>
+    <!-- Manifesto / Philosophy -->
+    <section class="x-manifesto">
+        <div class="x-manifesto-content">
+            <span class="x-label">Our Philosophy</span>
+            <h2 class="x-manifesto-huge">Software should get out of the way.</h2>
+            <div class="x-manifesto-grid">
+                <div class="x-manifesto-block">
+                    <h3>Zero friction.</h3>
+                    <p>We eliminate unnecessary clicks, endless loading screens, and cluttered interfaces. Every tool is
+                        designed for absolute efficiency.</p>
+                </div>
+                <div class="x-manifesto-block">
+                    <h3>Absolute scale.</h3>
+                    <p>Whether you're moving 100 orders a day or 100,000, our underlying architecture scales elastically
+                        without you ever noticing.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- CLEAN CTA -->
-    <section class="saas-cta">
-        <div class="container">
-            <div class="cta-card surface-card reveal-up">
-                <div class="cta-content">
-                    <h2>Ready to scale your infrastructure?</h2>
-                    <p>Join hundreds of innovative teams building the future on NexConnect.</p>
-                    <div class="cta-actions mt-lg">
-                        <a routerLink="/contact" class="btn-primary">Contact Sales</a>
-                        <a routerLink="/products" class="btn-secondary">View Pricing</a>
-                    </div>
-                </div>
-            </div>
+    <!-- Client Roster -->
+    <section class="x-clients">
+        <h2 class="x-clients-title">Trusted by industry leaders</h2>
+        <div class="x-clients-grid">
+            <div class="x-client-box">Acme Corp</div>
+            <div class="x-client-box">Stark Ind.</div>
+            <div class="x-client-box">Wayne Ent.</div>
+            <div class="x-client-box">Massive Dynamic</div>
+            <div class="x-client-box">Cyberdyne</div>
+            <div class="x-client-box">Initech</div>
+            <div class="x-client-box">Soylent</div>
+            <div class="x-client-box">Umbrella Corp</div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="x-cta">
+        <h2 class="x-cta-headline">Ready.</h2>
+        <div class="x-cta-actions">
+            <a routerLink="/products" class="x-btn primary">Start Free Trial</a>
+            <a routerLink="/contact" class="x-btn outline">Schedule Demo</a>
         </div>
     </section>
 

@@ -1,171 +1,162 @@
-<div class="saas-page-wrapper">
+<div class="x-products-container">
 
-    <!-- HERO HEADER -->
-    <header class="saas-page-header container">
-        <div class="header-chip reveal-up">
-            Our Platform
-        </div>
-        <h1 class="page-title reveal-up delay-100">
-            A unified system for <span class="text-blue">global scale.</span>
+    <!-- Hero Header - Typographical Extremism -->
+    <header class="x-huge-header">
+        <h1 class="x-headline">
+            <span class="x-line">Enterprise</span>
+            <span class="x-line">Scale.</span>
         </h1>
-        <div class="header-desc reveal-up delay-200">
-            <p>Replace the chaotic sprawl of enterprise SaaS with a single, highly performant infrastructure layer.</p>
-        </div>
+        <p class="x-sub-text">Unified digital tools designed to transform how your organization operates.</p>
+        <div class="x-abstract-bg"></div>
     </header>
 
-    <!-- LOADING STATE -->
-    <div class="container" *ngIf="loading">
-        <div class="pulse-loader"></div>
-        <p class="loader-text">Loading platform modules...</p>
+    <!-- Skeleton Loader -->
+    <div class="x-skeleton-layer" *ngIf="loading">
+        <div class="x-skeleton-item" *ngFor="let item of skeletonItems">
+            <div class="x-skel-title"></div>
+            <div class="x-skel-line"></div>
+            <div class="x-skel-line short"></div>
+        </div>
     </div>
 
-    <!-- EMPTY STATE -->
-    <div *ngIf="!loading && products.length === 0" class="container empty-state">
-        <div class="empty-icon text-muted">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M16 16s-1.5-2-4-2-4 2-4 2"></path>
-                <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                <line x1="15" y1="9" x2="15.01" y2="9"></line>
-            </svg>
-        </div>
-        <h2 class="section-title">No modules available</h2>
-        <p class="section-desc">We are currently provisioning new services. Please check back later.</p>
+    <!-- Empty State -->
+    <div *ngIf="!loading && products.length === 0" class="x-empty-state">
+        <h3 class="x-empty-title">Systems Offline.</h3>
+        <p>Our catalog is currently unavailable. Contact our team to proceed.</p>
+        <button mat-raised-button routerLink="/contact" class="x-btn">Contact Sales</button>
     </div>
 
-    <!-- MODERN PRODUCT GRID (BENTO/CARD STYLE) -->
-    <section class="saas-product-grid container" *ngIf="!loading && products.length > 0">
-        <div class="product-cards">
+    <!-- Brutalist Product Stacks -->
+    <div class="x-product-stack" *ngIf="!loading && products.length > 0">
 
-            <article class="product-card surface-card reveal-up" *ngFor="let product of products; let i = index"
-                [style.animation-delay]="(i * 100) + 'ms'">
+        <article class="x-product-block" *ngFor="let product of products" [attr.data-accent]="product.accent_color">
+            <div class="x-product-top">
+                <span class="x-product-tag" [class.trendzo-tag]="product.name === 'Trendzo'">{{ product.tag }}</span>
+                <div class="x-price" *ngIf="product.price > 0">${{product.price}}<span>/mo</span></div>
+                <div class="x-price" *ngIf="product.price === 0">Custom<span>/yr</span></div>
+            </div>
 
-                <!-- Card Header -->
-                <div class="card-header">
-                    <div class="product-icon" [ngClass]="{'bg-blue': i%3===0, 'bg-green': i%3===1, 'bg-red': i%3===2}">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                            <polyline points="2 17 12 22 22 17"></polyline>
-                            <polyline points="2 12 12 17 22 12"></polyline>
-                        </svg>
-                    </div>
-                    <span class="product-badge">{{ product.tag || 'Core' }}</span>
+            <h2 class="x-massive-title">{{product.name}}</h2>
+
+            <div class="x-product-details">
+                <p class="x-product-desc">{{product.description}}</p>
+                <ul class="x-feature-list">
+                    <li *ngIf="product.name === 'NexOffice'">Real-time collaboration</li>
+                    <li *ngIf="product.name === 'NexOffice'">Enterprise email hosting</li>
+                    <li *ngIf="product.name === 'NexHR'">Automated payroll</li>
+                    <li *ngIf="product.name === 'NexHR'">Performance tracking</li>
+                    <li *ngIf="product.name === 'NexCRM'">Pipeline management</li>
+                    <li *ngIf="product.name === 'NexCRM'">Lead automation</li>
+                    <li *ngIf="product.name === 'NexERP'">Global inventory</li>
+                    <li *ngIf="product.name === 'NexERP'">Procurement control</li>
+                    <li *ngIf="product.name === 'Trendzo'">Same-day delivery</li>
+                    <li *ngIf="product.name === 'Trendzo'">AI styling engine</li>
+                </ul>
+                <div class="x-product-action">
+                    <button class="x-btn" [routerLink]="['/products', product.id]">Deploy</button>
                 </div>
+            </div>
+        </article>
 
-                <!-- Card Body -->
-                <div class="card-body">
-                    <h3 class="product-name">{{ product.name }}</h3>
-                    <p class="product-desc">{{ product.description }}</p>
+    </div>
 
-                    <ul class="feature-list">
-                        <li>
-                            <svg class="check-icon text-green" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="3">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Instant global deployment
-                        </li>
-                        <li>
-                            <svg class="check-icon text-green" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="3">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Zero-knowledge architecture
-                        </li>
-                        <li>
-                            <svg class="check-icon text-green" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="3">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Edge accelerated network
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Card Footer (Pricing & Action) -->
-                <div class="card-footer">
-                    <div class="price-block">
-                        <span class="price-val" *ngIf="product.price > 0">${{ product.price }}</span>
-                        <span class="price-val text-blue" *ngIf="product.price === 0">Custom</span>
-                        <span class="price-period" *ngIf="product.price > 0">/ month</span>
-                    </div>
-                    <a [routerLink]="['/products', product.id]" class="btn-secondary btn-sm">Details</a>
-                </div>
-            </article>
-
+    <!-- The Ecosystem - Minimalist Graph -->
+    <section class="x-ecosystem">
+        <h2 class="x-eco-title">Unified Core.</h2>
+        <p class="x-eco-desc">Silos slow you down. Our platform is built on a single, unified architecture. Information
+            flows seamlessly.</p>
+        <div class="x-eco-visual">
+            <div class="x-node center">DATA</div>
+            <div class="x-node-ring"></div>
         </div>
     </section>
 
-    <!-- CLEAN INFRASTRUCTURE SPECS -->
-    <section class="saas-infrastructure">
-        <div class="container">
-            <div class="section-header text-center reveal-up">
-                <h2 class="section-title">Under the Hood</h2>
-                <p class="section-desc">Engineered for absolute reliability and infinite scale.</p>
+    <!-- Technical Specs -->
+    <section class="x-tech">
+        <div class="x-tech-header">
+            <h2 class="x-tech-title">Architecture.</h2>
+            <p class="x-tech-sub">Built for engineering teams who demand complete control.</p>
+        </div>
+
+        <div class="x-tech-grid">
+            <div class="x-tech-block">
+                <h3>Global Edge Network</h3>
+                <p>Applications are deployed across 35+ regions worldwide, ensuring sub-50ms latency for 95% of your
+                    global workforce.</p>
             </div>
-
-            <div class="infra-grid mt-xl">
-                <div class="infra-item reveal-up">
-                    <div class="infra-icon text-blue">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <path
-                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                            </path>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                        </svg>
-                    </div>
-                    <h4>Elastic Compute</h4>
-                    <p>Kubernetes-based dynamic resource allocation. Scales from 10 to 100,000 requests/sec seamlessly
-                        without manual intervention.</p>
-                </div>
-
-                <div class="infra-item reveal-up delay-100">
-                    <div class="infra-icon text-green">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                    </div>
-                    <h4>Event-Driven Core</h4>
-                    <p>Distributed Kafka logging ensures an immutable audit trail, precise replays, and a real-time
-                        reactive architecture.</p>
-                </div>
-
-                <div class="infra-item reveal-up delay-200">
-                    <div class="infra-icon text-red">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <path
-                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h4>Global Edge</h4>
-                    <p>Deployed across 35+ regions worldwide natively, ensuring sub-50ms latency for a dispersed global
-                        workforce and user base.</p>
-                </div>
+            <div class="x-tech-block">
+                <h3>Event-Driven Core</h3>
+                <p>Every action publishes to a distributed Kafka log. React in real-time, build complex workflows, and
+                    maintain an immutable audit trail.</p>
+            </div>
+            <div class="x-tech-block">
+                <h3>Zero Trust Security</h3>
+                <p>Identity-aware proxies, mTLS between all microservices, and hardware security modules for key
+                    management.</p>
+            </div>
+            <div class="x-tech-block">
+                <h3>Elastic Compute</h3>
+                <p>Kubernetes-based dynamic resource allocation. The system automatically scales from 10 to 10,000
+                    requests per second instantly.</p>
             </div>
         </div>
     </section>
 
-    <!-- CLEAN CTA -->
-    <section class="saas-cta">
-        <div class="container">
-            <div class="cta-card surface-card reveal-up">
-                <div class="cta-content">
-                    <h2>Ready to migrate?</h2>
-                    <p>Talk to our architecture team to plan your transition to NexConnect.</p>
-                    <div class="cta-actions mt-lg">
-                        <a routerLink="/contact" class="btn-primary">Contact Engineering</a>
-                    </div>
-                </div>
+    <!-- API Snippet -->
+    <section class="x-api">
+        <div class="x-api-split">
+            <div class="x-api-text">
+                <h2>Headless by default.</h2>
+                <p>Don't want to use our UI? Fine. Every single action you can take in the dashboard is available via
+                    our documented REST and GraphQL APIs.</p>
+                <a routerLink="/contact" class="x-btn">Read the API Docs →</a>
+            </div>
+            <div class="x-api-code">
+                <!-- Terminal aesthetic -->
+                <pre><code><span class="muted"># Fetch all active products</span>
+curl -X GET "https://api.nexconnect.io/v1/products" \
+  -H "Authorization: Bearer $NC_TOKEN" \
+  -H "Content-Type: application/json"
+
+<span class="muted">&#123;
+  "status": 200,
+  "data": [
+    &#123;
+      "id": "prod_x89f",
+      "name": "NexOffice",
+      "status": "active"
+    &#125;
+  ]
+&#125;</span></code></pre>
             </div>
         </div>
     </section>
+
+    <!-- Enterprise SLA -->
+    <section class="x-sla">
+        <div class="x-sla-grid">
+            <div class="x-sla-item">
+                <div class="x-sla-number">01</div>
+                <h3>Enterprise Security</h3>
+                <p>SOC 2 Type II certified. Bank-grade encryption.</p>
+            </div>
+            <div class="x-sla-item">
+                <div class="x-sla-number">02</div>
+                <h3>99.99% Uptime</h3>
+                <p>Global distributed infrastructure guaranteed by SLA.</p>
+            </div>
+            <div class="x-sla-item">
+                <div class="x-sla-number">03</div>
+                <h3>24/7 Dedicated</h3>
+                <p>Direct lines to technical account managers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="x-final-cta">
+        <h2 class="x-cta-title">Transform.</h2>
+        <a routerLink="/contact" class="x-btn outline">Build your deployment plan</a>
+    </div>
 
 </div>
