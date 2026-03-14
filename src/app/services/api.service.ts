@@ -27,13 +27,13 @@ export interface AdminUser {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-  private publicUrl = 'http://localhost:8000/api/v1';
-  private adminUrl = 'http://localhost:8000/admin';
+  private publicUrl = '/api/v1';
+  private adminUrl = '/api/admin';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // --- Public ---
   getProducts(): Observable<Product[]> {
@@ -49,8 +49,8 @@ export class ApiService {
     const token = localStorage.getItem('admin_token');
     return {
       headers: new HttpHeaders({
-        'Authorization': `Bearer ${token}`
-      })
+        Authorization: `Bearer ${token}`,
+      }),
     };
   }
 
@@ -58,34 +58,55 @@ export class ApiService {
     const body = new URLSearchParams();
     body.set('username', credentials.email); // OAuth2 expects username
     body.set('password', credentials.password);
-    
+
     return this.http.post(`${this.adminUrl}/login`, body.toString(), {
-      headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
     });
   }
 
   getAdminUsers(): Observable<AdminUser[]> {
-    return this.http.get<AdminUser[]>(`${this.adminUrl}/users`, this.getAuthHeaders());
+    return this.http.get<AdminUser[]>(
+      `${this.adminUrl}/users`,
+      this.getAuthHeaders(),
+    );
   }
 
   getAdminProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.adminUrl}/products`, this.getAuthHeaders());
+    return this.http.get<Product[]>(
+      `${this.adminUrl}/products`,
+      this.getAuthHeaders(),
+    );
   }
 
   createProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(`${this.adminUrl}/products`, product, this.getAuthHeaders());
+    return this.http.post<Product>(
+      `${this.adminUrl}/products`,
+      product,
+      this.getAuthHeaders(),
+    );
   }
 
   updateProduct(id: number, product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.adminUrl}/products/${id}`, product, this.getAuthHeaders());
+    return this.http.put<Product>(
+      `${this.adminUrl}/products/${id}`,
+      product,
+      this.getAuthHeaders(),
+    );
   }
 
   deleteProduct(id: number): Observable<any> {
-    return this.http.delete(`${this.adminUrl}/products/${id}`, this.getAuthHeaders());
+    return this.http.delete(
+      `${this.adminUrl}/products/${id}`,
+      this.getAuthHeaders(),
+    );
   }
 
   getContacts(): Observable<ContactMessage[]> {
-    return this.http.get<ContactMessage[]>(`${this.adminUrl}/contacts`, this.getAuthHeaders());
+    return this.http.get<ContactMessage[]>(
+      `${this.adminUrl}/contacts`,
+      this.getAuthHeaders(),
+    );
   }
 }
-
