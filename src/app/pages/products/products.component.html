@@ -1,162 +1,98 @@
-<div class="x-products-container">
+<div class="ag-page-wrapper">
 
-    <!-- Hero Header - Typographical Extremism -->
-    <header class="x-huge-header">
-        <h1 class="x-headline">
-            <span class="x-line">Enterprise</span>
-            <span class="x-line">Scale.</span>
+    <!-- HERO HEADER -->
+    <header class="ag-page-header container">
+        <h1 class="ag-massive-title reveal-up">
+            <span class="block">THE</span>
+            <span class="block delay-100">SYSTEM.</span>
         </h1>
-        <p class="x-sub-text">Unified digital tools designed to transform how your organization operates.</p>
-        <div class="x-abstract-bg"></div>
+        <div class="ag-header-desc reveal-up delay-200">
+            <p>Unified digital architecture meant to replace the chaotic sprawl of enterprise SaaS.</p>
+        </div>
     </header>
 
-    <!-- Skeleton Loader -->
-    <div class="x-skeleton-layer" *ngIf="loading">
-        <div class="x-skeleton-item" *ngFor="let item of skeletonItems">
-            <div class="x-skel-title"></div>
-            <div class="x-skel-line"></div>
-            <div class="x-skel-line short"></div>
-        </div>
+    <!-- LOADING STATE -->
+    <div class="container" *ngIf="loading">
+        <div class="ag-pulse-loader"></div>
+        <p class="ag-loader-text">INITIALIZING CORE...</p>
     </div>
 
-    <!-- Empty State -->
-    <div *ngIf="!loading && products.length === 0" class="x-empty-state">
-        <h3 class="x-empty-title">Systems Offline.</h3>
-        <p>Our catalog is currently unavailable. Contact our team to proceed.</p>
-        <button mat-raised-button routerLink="/contact" class="x-btn">Contact Sales</button>
+    <!-- EMPTY STATE -->
+    <div *ngIf="!loading && products.length === 0" class="container ag-empty-state">
+        <h2 class="ag-section-title">SYSTEMS OFFLINE.</h2>
     </div>
 
-    <!-- Brutalist Product Stacks -->
-    <div class="x-product-stack" *ngIf="!loading && products.length > 0">
+    <!-- MAIN PRODUCT EDITORIAL STACK -->
+    <section class="ag-product-editorial" *ngIf="!loading && products.length > 0">
+        <article class="ag-product-card" *ngFor="let product of products; let i = index">
+            <!-- Full bleed image layer on hover -->
+            <div class="ag-product-bg-image" [style.background-image]="'url(' + product.image_url + ')'"></div>
 
-        <article class="x-product-block" *ngFor="let product of products" [attr.data-accent]="product.accent_color">
-            <div class="x-product-top">
-                <span class="x-product-tag" [class.trendzo-tag]="product.name === 'Trendzo'">{{ product.tag }}</span>
-                <div class="x-price" *ngIf="product.price > 0">${{product.price}}<span>/mo</span></div>
-                <div class="x-price" *ngIf="product.price === 0">Custom<span>/yr</span></div>
-            </div>
+            <div class="container ag-product-card-inner">
+                <div class="ag-product-header">
+                    <span class="ag-product-index">0{{ i + 1 }}</span>
+                    <span class="ag-product-tag">{{ product.tag }}</span>
+                </div>
 
-            <h2 class="x-massive-title">{{product.name}}</h2>
-
-            <div class="x-product-details">
-                <p class="x-product-desc">{{product.description}}</p>
-                <ul class="x-feature-list">
-                    <li *ngIf="product.name === 'NexOffice'">Real-time collaboration</li>
-                    <li *ngIf="product.name === 'NexOffice'">Enterprise email hosting</li>
-                    <li *ngIf="product.name === 'NexHR'">Automated payroll</li>
-                    <li *ngIf="product.name === 'NexHR'">Performance tracking</li>
-                    <li *ngIf="product.name === 'NexCRM'">Pipeline management</li>
-                    <li *ngIf="product.name === 'NexCRM'">Lead automation</li>
-                    <li *ngIf="product.name === 'NexERP'">Global inventory</li>
-                    <li *ngIf="product.name === 'NexERP'">Procurement control</li>
-                    <li *ngIf="product.name === 'Trendzo'">Same-day delivery</li>
-                    <li *ngIf="product.name === 'Trendzo'">AI styling engine</li>
-                </ul>
-                <div class="x-product-action">
-                    <button class="x-btn" [routerLink]="['/products', product.id]">Deploy</button>
+                <div class="ag-product-body">
+                    <h2 class="ag-product-massive-name">{{ product.name }}</h2>
+                    <div class="ag-product-info">
+                        <p class="ag-product-desc">{{ product.description }}</p>
+                        <ul class="ag-feature-list">
+                            <li>Instant deployment</li>
+                            <li>Zero-trust architecture</li>
+                            <li>Global edge edge network</li>
+                        </ul>
+                        <div class="ag-product-actions">
+                            <a [routerLink]="['/products', product.id]" class="btn-primary">View Specifications</a>
+                            <div class="ag-product-price" *ngIf="product.price > 0">${{ product.price }}<span>/mo</span>
+                            </div>
+                            <div class="ag-product-price" *ngIf="product.price === 0">Custom</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </article>
-
-    </div>
-
-    <!-- The Ecosystem - Minimalist Graph -->
-    <section class="x-ecosystem">
-        <h2 class="x-eco-title">Unified Core.</h2>
-        <p class="x-eco-desc">Silos slow you down. Our platform is built on a single, unified architecture. Information
-            flows seamlessly.</p>
-        <div class="x-eco-visual">
-            <div class="x-node center">DATA</div>
-            <div class="x-node-ring"></div>
-        </div>
     </section>
 
-    <!-- Technical Specs -->
-    <section class="x-tech">
-        <div class="x-tech-header">
-            <h2 class="x-tech-title">Architecture.</h2>
-            <p class="x-tech-sub">Built for engineering teams who demand complete control.</p>
-        </div>
+    <!-- INFRASTRUCTURE SPECS -->
+    <section class="ag-infrastructure full-bleed">
+        <div class="container">
+            <div class="ag-section-header">
+                <h2 class="ag-section-title reveal-up">INFRASTRUCTURE</h2>
+                <div class="divider"></div>
+            </div>
 
-        <div class="x-tech-grid">
-            <div class="x-tech-block">
-                <h3>Global Edge Network</h3>
-                <p>Applications are deployed across 35+ regions worldwide, ensuring sub-50ms latency for 95% of your
-                    global workforce.</p>
-            </div>
-            <div class="x-tech-block">
-                <h3>Event-Driven Core</h3>
-                <p>Every action publishes to a distributed Kafka log. React in real-time, build complex workflows, and
-                    maintain an immutable audit trail.</p>
-            </div>
-            <div class="x-tech-block">
-                <h3>Zero Trust Security</h3>
-                <p>Identity-aware proxies, mTLS between all microservices, and hardware security modules for key
-                    management.</p>
-            </div>
-            <div class="x-tech-block">
-                <h3>Elastic Compute</h3>
-                <p>Kubernetes-based dynamic resource allocation. The system automatically scales from 10 to 10,000
-                    requests per second instantly.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- API Snippet -->
-    <section class="x-api">
-        <div class="x-api-split">
-            <div class="x-api-text">
-                <h2>Headless by default.</h2>
-                <p>Don't want to use our UI? Fine. Every single action you can take in the dashboard is available via
-                    our documented REST and GraphQL APIs.</p>
-                <a routerLink="/contact" class="x-btn">Read the API Docs →</a>
-            </div>
-            <div class="x-api-code">
-                <!-- Terminal aesthetic -->
-                <pre><code><span class="muted"># Fetch all active products</span>
-curl -X GET "https://api.nexconnect.io/v1/products" \
-  -H "Authorization: Bearer $NC_TOKEN" \
-  -H "Content-Type: application/json"
-
-<span class="muted">&#123;
-  "status": 200,
-  "data": [
-    &#123;
-      "id": "prod_x89f",
-      "name": "NexOffice",
-      "status": "active"
-    &#125;
-  ]
-&#125;</span></code></pre>
-            </div>
-        </div>
-    </section>
-
-    <!-- Enterprise SLA -->
-    <section class="x-sla">
-        <div class="x-sla-grid">
-            <div class="x-sla-item">
-                <div class="x-sla-number">01</div>
-                <h3>Enterprise Security</h3>
-                <p>SOC 2 Type II certified. Bank-grade encryption.</p>
-            </div>
-            <div class="x-sla-item">
-                <div class="x-sla-number">02</div>
-                <h3>99.99% Uptime</h3>
-                <p>Global distributed infrastructure guaranteed by SLA.</p>
-            </div>
-            <div class="x-sla-item">
-                <div class="x-sla-number">03</div>
-                <h3>24/7 Dedicated</h3>
-                <p>Direct lines to technical account managers.</p>
+            <div class="ag-infra-grid">
+                <div class="ag-infra-block reveal-up">
+                    <div class="ag-infra-num">01</div>
+                    <h3>ELASTIC COMPUTE</h3>
+                    <p>Kubernetes-based dynamic resource allocation. Scales from 10 to 100,000 req/sec seamlessly.</p>
+                </div>
+                <div class="ag-infra-block reveal-up delay-100">
+                    <div class="ag-infra-num">02</div>
+                    <h3>EVENT-DRIVEN</h3>
+                    <p>Distributed Kafka logging ensures an immutable audit trail and real-time reactive architecture.
+                    </p>
+                </div>
+                <div class="ag-infra-block reveal-up delay-200">
+                    <div class="ag-infra-num">03</div>
+                    <h3>GLOBAL EDGE</h3>
+                    <p>Deployed across 35+ regions worldwide, ensuring sub-50ms latency for a dispersed workforce.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- CTA -->
-    <div class="x-final-cta">
-        <h2 class="x-cta-title">Transform.</h2>
-        <a routerLink="/contact" class="x-btn outline">Build your deployment plan</a>
-    </div>
+    <section class="ag-cta container">
+        <div class="ag-cta-inner reveal-up">
+            <h2 class="ag-cta-massive">DEPLOY.</h2>
+            <div class="ag-cta-controls">
+                <a routerLink="/contact" class="btn-primary"
+                    style="background: var(--text-primary); color: var(--bg-primary);">Contact Architecture Team</a>
+            </div>
+        </div>
+    </section>
 
 </div>

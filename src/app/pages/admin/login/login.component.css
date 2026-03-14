@@ -1,236 +1,126 @@
 /* =========================================================================
-   X.COMPANY REPLICATION — ADMIN LOGIN
+   ANTIGRAVITY ADMIN LOGIN AESTHETIC
    ========================================================================= */
 
-:host {
-    display: block;
-    width: 100%;
-    background: #000;
-    color: #fff;
-    font-family: var(--font);
-}
-
-.x-login-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
-}
-
-/* =========================================
-   LEFT PANEL — Brand
-   ========================================= */
-.x-login-brand {
-    background: #090909;
-    border-right: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    align-items: flex-end;
-    padding: 8vh 6vw;
-    position: relative;
-    overflow: hidden;
-}
-
-.x-login-brand-inner {
-    position: relative;
-    z-index: 10;
-}
-
-.x-brand-headline {
-    font-size: clamp(3rem, 6vw, 8rem);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 0.9;
-    margin-bottom: 2rem;
-}
-
-.x-brand-sub {
-    font-size: clamp(1.2rem, 2vw, 1.8rem);
-    opacity: 0.4;
-    line-height: 1.4;
-    letter-spacing: -0.01em;
-    margin-bottom: 3rem;
-}
-
-.x-security-badges {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.x-sec-badge {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    padding: 0.75rem 1rem;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.05);
-    width: fit-content;
-}
-
-.x-sec-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.x-sec-dot.green {
-    background: #39B54A;
-    box-shadow: 0 0 10px rgba(57, 181, 74, 0.4);
-}
-
-.x-brand-glow-1,
-.x-brand-glow-2 {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.2;
-    pointer-events: none;
-}
-
-.x-brand-glow-1 {
-    width: 50vw; height: 50vw;
-    background: #27AAE1;
-    top: -10%; left: -10%;
-}
-
-.x-brand-glow-2 {
-    width: 30vw; height: 30vw;
-    background: #EF4136;
-    bottom: -5%; right: -5%;
-}
-
-/* =========================================
-   RIGHT PANEL — Form
-   ========================================= */
-.x-login-form-panel {
+.ag-login-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8vh 6vw;
-    background: #000;
+    min-height: 100vh;
+    padding: var(--space-md);
+    background: var(--bg-primary);
 }
 
-.x-login-form-inner {
+.ag-login-box {
     width: 100%;
-    max-width: 440px;
+    max-width: 500px;
+    padding: var(--space-2xl) var(--space-xl);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-secondary);
 }
 
-.x-login-title {
-    font-size: clamp(3rem, 5vw, 6rem);
+.ag-login-header {
+    margin-bottom: var(--space-2xl);
+}
+
+.ag-massive-title {
+    font-size: clamp(3rem, 8vw, 5rem);
+    line-height: 0.85;
+    letter-spacing: -0.05em;
     font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 0.9;
-    margin: 0 0 1rem 0;
+    margin: 0;
 }
 
-.x-login-sub {
-    font-size: 1rem;
-    opacity: 0.4;
-    margin-bottom: 4rem;
-    letter-spacing: 0;
+.ag-login-sub {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: var(--space-md);
+    font-family: var(--font-display);
 }
 
-/* Form Fields */
-.x-field {
+/* =========================================
+   FORM PURE BRUTALISM
+   ========================================= */
+.ag-login-form {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 2.5rem;
+    gap: var(--space-xl);
 }
 
-.x-label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
+.ag-field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.ag-field label {
+    font-family: var(--font-display);
+    font-size: var(--text-small);
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xs);
 }
 
-.x-input {
+.ag-brutalist-input {
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-    color: #fff;
-    font-family: var(--font);
-    font-size: 1.1rem;
-    padding: 0.75rem 0;
+    border-bottom: 2px solid var(--border-strong);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 500;
+    padding: var(--space-sm) 0;
     outline: none;
-    width: 100%;
-    transition: border-color 0.25s ease;
     border-radius: 0;
+    transition: border-color var(--transition-fast);
 }
 
-.x-input::placeholder { color: rgba(255,255,255,0.15); }
-.x-input:focus { border-bottom-color: rgba(255,255,255,0.6); }
-
-/* Error state */
-.x-login-error {
-    font-size: 0.85rem;
-    color: #EF4136;
-    margin-bottom: 1.5rem;
-    padding: 12px 0;
-    border-top: 1px solid rgba(239,65,54,0.2);
+.ag-brutalist-input::placeholder {
+    color: var(--text-muted);
+    font-weight: 300;
 }
 
-/* Button */
-.x-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.1rem 2.5rem;
-    font-size: 1rem;
+.ag-brutalist-input:focus {
+    border-bottom-color: var(--text-primary);
+}
+
+.ag-login-error {
+    color: var(--bg-primary);
+    background: var(--text-primary);
+    padding: var(--space-sm);
+    font-size: var(--text-small);
+    font-family: var(--font-display);
+    text-transform: uppercase;
     font-weight: 600;
-    text-decoration: none;
-    color: #fff;
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.4);
-    cursor: pointer;
-    font-family: var(--font);
-    transition: background 0.2s ease, color 0.2s ease;
-    white-space: nowrap;
+    text-align: center;
 }
 
-.x-btn:hover:not(:disabled) {
-    background: #fff;
-    color: #000;
-    border-color: #fff;
-}
-
-.x-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-.x-login-btn {
+.ag-submit-btn {
     width: 100%;
-    margin-bottom: 2rem;
+    margin-top: var(--space-md);
 }
-
-/* Back link */
-.x-login-footer { margin-top: 1rem; }
-
-.x-back-link {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.3);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-.x-back-link:hover { color: #fff; }
 
 /* =========================================
-   RESPONSIVE
+   FOOTER
    ========================================= */
-@media (max-width: 900px) {
-    .x-login-container { grid-template-columns: 1fr; }
-    .x-login-brand {
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,0.06);
-        padding: 8vh 5vw;
-        min-height: 35vh;
-    }
+.ag-login-footer {
+    margin-top: var(--space-2xl);
+    text-align: center;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: var(--space-md);
+}
+
+.ag-back-link {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color var(--transition-fast);
+}
+
+.ag-back-link:hover {
+    color: var(--text-primary);
 }

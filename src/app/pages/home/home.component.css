@@ -1,572 +1,279 @@
 /* =========================================================================
-   X.COMPANY REPLICATION - NEXCONNECT
+   ANTIGRAVITY HOMEPAGE AESTHETIC
    ========================================================================= */
 
-:host {
-    display: block;
+.ag-home-container {
     width: 100%;
-    /* X uses a very dark or black theme predominantly */
-    background-color: #000;
-    color: #fff;
-    font-family: 'Inter', -apple-system, sans-serif;
-    overflow-x: hidden;
-    --brand-blue: #27AAE1;
-    --brand-green: #39B54A;
-    --brand-red: #EF4136;
 }
 
-.x-factory-container {
-    width: 100%;
-    min-height: 100vh;
-}
-
-/* Typography utilities */
-.x-massive-trendzo,
-.x-headline {
-    font-size: clamp(4rem, 10vw, 12rem);
-    line-height: 0.9;
-    letter-spacing: -0.04em;
-    font-weight: 700;
-    margin: 0;
-}
-
-.x-huge-text {
-    font-size: clamp(2rem, 5vw, 5rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    font-weight: 500;
-}
+/* Utilities for template */
+.relative-container { position: relative; }
+.h-full { height: 100%; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.justify-end { justify-content: flex-end; }
+.pb-lg { padding-bottom: var(--space-xl); }
+.block { display: block; }
 
 /* =========================================
-   HERO SEQUENCE
+   HERO 
    ========================================= */
-.x-hero {
-    height: 200vh; /* Pinned scroll section */
-    position: relative;
-    width: 100%;
-}
-
-.x-hero-sticky {
-    position: sticky;
-    top: 0;
-    width: 100%;
+.ag-hero {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    padding: 0 5vw 8vh;
+    min-height: 800px;
     overflow: hidden;
-}
-
-.x-headline {
     position: relative;
-    z-index: 10;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 4vh;
 }
 
-/* Hero CTA buttons */
-.x-hero-cta {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 10;
-    margin-bottom: 6vh;
-}
-
-/* Stats strip */
-.x-stats-strip {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    padding: 4vh 5vw;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    background: #000;
-    position: relative;
-    z-index: 20;
-}
-
-.x-stat {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 0 3vw;
-}
-
-.x-stat-n {
-    font-size: clamp(2rem, 4vw, 4rem);
+.ag-massive-title {
+    font-size: clamp(4rem, 15vw, 15rem);
+    line-height: 0.85;
+    letter-spacing: -0.05em;
     font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1;
+    color: var(--text-primary);
+    position: relative;
+    z-index: 10;
+    margin-bottom: var(--space-md);
 }
 
-.x-stat-l {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    opacity: 0.4;
+.ag-hero-desc {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 10;
 }
 
-.x-stat-rule {
-    width: 1px;
-    height: 60px;
-    background: rgba(255,255,255,0.1);
-    flex-shrink: 0;
+.ag-hero-desc p {
+    font-size: var(--text-body-lg);
+    font-weight: 400;
+    max-width: 600px;
 }
 
-.x-line {
-    display: block;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-
-.x-hero-canvas {
+.ag-hero-glow {
     position: absolute;
-    inset: 0;
-    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+    transform: translate(-50%, -50%);
     pointer-events: none;
-    opacity: 0.4;
-    filter: blur(80px);
-}
-
-.x-blob {
-    position: absolute;
+    z-index: 1;
     border-radius: 50%;
 }
 
-.x-blob-1 {
-    width: 40vw;
-    height: 40vw;
-    background: var(--brand-blue);
-    top: -10%;
-    left: -10%;
-}
-
-.x-blob-2 {
-    width: 30vw;
-    height: 30vw;
-    background: var(--brand-red);
-    bottom: -10%;
-    right: -10%;
-}
-
-.x-scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    opacity: 0.7;
-    z-index: 10;
-}
-
-.x-line-down {
-    width: 1px;
-    height: 60px;
-    background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
+@media (max-width: 768px) {
+    .ag-hero-desc {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-md);
+    }
 }
 
 /* =========================================
-   NARRATIVE SEQUENCE 
+   STATS STRIP
    ========================================= */
-.x-narrative {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10vh 5vw;
-    background-color: #000;
-    position: relative;
-    z-index: 20;
+.ag-stats {
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--bg-secondary);
 }
 
-.x-narrative-content {
-    width: 100%;
+.ag-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: var(--space-lg) var(--space-md);
 }
 
-/* Text will be scrubbed via GSAP */
-#narrative-text {
-    opacity: 0.15; 
-    color: #fff;
-    background: linear-gradient(to right, #fff 50%, rgba(255,255,255,0.15) 50%);
-    background-size: 200% 100%;
-    background-position: 100% 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    margin: 0;
+.ag-stat-item {
+    border-right: 1px solid var(--border-subtle);
+    padding: 0 var(--space-md);
 }
 
-/* =========================================
-   SUITE CARDS (VERTICAL STACK)
-   ========================================= */
-.x-suite {
-    height: 400vh; /* Allow enough scroll for cards to stack */
-    position: relative;
-    background: #111;
+.ag-stat-item:last-child {
+    border-right: none;
 }
 
-.x-suite-sticky {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 10vh 5vw;
-    overflow: hidden;
-}
-
-.x-suite-header h2 {
-    font-size: clamp(2.5rem, 6vw, 6rem);
-    line-height: 1;
-    letter-spacing: -0.03em;
-    margin: 0 0 60px 0;
-}
-
-.x-suite-cards {
-    position: relative;
-    flex-grow: 1;
-    width: 100%;
-    perspective: 1000px;
-}
-
-.x-product-card {
-    position: absolute;
-    bottom: 0px; 
-    left: 0;
-    width: 100%;
-    height: 60vh;
-    border-radius: 24px 24px 0 0;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-    text-decoration: none;
-    transform-origin: top center;
-    /* initial state for GSAP */
-    transform: translateY(100%);
-    box-shadow: 0 -20px 40px rgba(0,0,0,0.5);
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.x-prod-num {
-    font-size: 1rem;
+.ag-stat-number {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
     font-weight: 600;
-    opacity: 0.5;
-    margin-bottom: auto;
+    line-height: 1;
+    margin-bottom: var(--space-xs);
 }
 
-.x-prod-name {
-    font-size: clamp(2rem, 4vw, 4rem);
-    margin: 0 0 10px 0;
-    letter-spacing: -0.02em;
+.ag-stat-label {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
-.x-prod-desc {
-    font-size: 1.1rem;
-    opacity: 0.8;
-    max-width: 600px;
-    margin: 0;
-}
-
-.x-prod-arrow {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    font-size: 2rem;
+@media (max-width: 768px) {
+    .ag-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md) 0;
+    }
+    .ag-stat-item:nth-child(2) { border-right: none; }
+    .ag-stat-item:nth-child(n+3) { padding-top: var(--space-md); border-top: 1px solid var(--border-subtle); }
 }
 
 /* =========================================
-   TRENDZO (Extreme Split)
+   PRODUCTS LIST (EDITORIAL ROW STYLES)
    ========================================= */
-.x-trendzo {
-    background-color: var(--brand-red); /* Massive contrast */
-    color: #000;
-    min-height: 100vh;
-    position: relative;
-    z-index: 30;
-    overflow: hidden;
+.ag-products {
+    padding: var(--space-2xl) 0;
 }
 
-.x-trendzo-container {
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 100vh;
+.ag-section-title {
+    font-size: var(--text-small);
+    color: var(--text-secondary);
+    letter-spacing: 0.15em;
 }
 
-.x-trendzo-text {
-    flex: 1 1 500px;
-    padding: 10vh 5vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.x-label {
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-}
-
-.x-trendzo-desc {
-    font-size: clamp(1.2rem, 2vw, 2rem);
-    line-height: 1.3;
-    max-width: 600px;
-    margin: 2rem 0;
-    font-weight: 500;
-}
-
-.x-trendzo-visual {
-    flex: 1 1 500px;
+.ag-product-row {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 10vh 5vw;
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--border-subtle);
+    border-top: 1px solid transparent;
+    transition: all var(--transition-fast);
 }
 
-.x-phone-mockup {
-    width: 300px;
-    height: 600px;
-    background: #000;
-    border-radius: 40px;
-    border: 12px solid #222;
-    position: relative;
-    box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
-    /* For GSAP floating effect */
+.ag-product-row:first-child {
+    border-top: 1px solid var(--border-subtle);
 }
 
-/* =========================================
-   PROCESS (Typographical Stack)
-   ========================================= */
-.x-process {
-    background: #000;
-    padding: 15vh 5vw;
-    color: #fff;
+.ag-product-index {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    width: 60px;
+    font-family: var(--font-display);
 }
 
-.x-process-title {
-    font-size: clamp(3rem, 6vw, 6rem);
-    letter-spacing: -0.03em;
-    margin-bottom: 10vh;
-    padding-bottom: 20px;
-    border-bottom: 2px solid rgba(255,255,255,0.1);
-}
-
-.x-process-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 40px;
-    margin-bottom: 8vh;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 8vh;
-}
-
-.x-step-num {
-    font-size: clamp(2rem, 4vw, 4rem);
-    color: var(--brand-blue);
-    font-weight: 300;
-    line-height: 1;
-}
-
-.x-step-text {
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
+.ag-product-name {
+    font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 500;
-    line-height: 1.2;
     letter-spacing: -0.02em;
+    flex-grow: 1;
+    transition: transform var(--transition-fast);
+}
+
+.ag-product-tag {
+    font-size: var(--text-small);
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-right: var(--space-md);
+}
+
+.ag-product-arrow {
+    transform: rotate(-45deg);
+    transition: transform var(--transition-fast);
+}
+
+/* Row Hover State */
+.ag-product-row:hover {
+    border-bottom-color: var(--text-primary);
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+}
+
+.ag-product-row:hover .ag-product-name {
+    transform: translateX(10px);
+}
+
+.ag-product-row:hover .ag-product-arrow {
+    transform: rotate(0deg) translateX(5px);
+}
+
+/* Hover Floating Image Effect */
+.ag-product-hover-img {
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    transform: translateY(-50%) scale(0.8);
+    width: 400px;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: -1;
+    filter: grayscale(100%) contrast(1.2);
+    transition: all var(--transition-slow);
+}
+
+.ag-product-row:hover .ag-product-hover-img {
+    opacity: 0.3;
+    visibility: visible;
+    transform: translateY(-50%) scale(1);
+}
+
+@media (max-width: 768px) {
+    .ag-product-hover-img { display: none; }
+    .ag-product-tag { display: none; }
 }
 
 /* =========================================
    MANIFESTO
    ========================================= */
-.x-manifesto {
-    padding: 15vh 5vw;
-    background: #050505;
-    border-top: 1px solid rgba(255,255,255,0.1);
+.ag-manifesto {
+    padding: var(--space-2xl) 0;
+    background: var(--bg-secondary);
 }
 
-.x-manifesto-content {
-    max-width: 1400px;
-}
-
-.x-manifesto-huge {
-    font-size: clamp(3rem, 6vw, 7rem);
-    font-weight: 700;
-    line-height: 0.9;
-    letter-spacing: -0.04em;
-    margin: 2rem 0 6rem;
-}
-
-.x-manifesto-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10vw;
-}
-
-.x-manifesto-block h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #fff;
-    padding-bottom: 0.5rem;
-    display: inline-block;
-}
-
-.x-manifesto-block p {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.6;
-}
-
-/* =========================================
-   CLIENT ROSTER
-   ========================================= */
-.x-clients {
-    padding: 15vh 5vw;
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.x-clients-title {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.4);
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.x-clients-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.x-client-box {
-    background: #000;
-    padding: 3rem 2rem;
+.ag-manifesto-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: rgba(255,255,255,0.6);
-    transition: color 0.3s ease, background 0.3s ease;
+    gap: var(--space-lg);
+    align-items: flex-start;
 }
 
-.x-client-box:hover {
-    color: #000;
-    background: #fff;
+.ag-manifesto-statement {
+    flex: 2;
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+}
+
+.ag-manifesto-body {
+    flex: 1;
+    padding-top: var(--space-sm);
+}
+
+.ag-manifesto-body p {
+    font-size: var(--text-body-lg);
+}
+
+@media (max-width: 1024px) {
+    .ag-manifesto-content { flex-direction: column; }
 }
 
 /* =========================================
    CTA SECTION
    ========================================= */
-.x-cta {
-    background: #000;
-    min-height: 80vh;
+.ag-cta {
+    padding: var(--space-2xl) 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 10vh 5vw;
 }
 
-.x-cta-headline {
-    font-size: clamp(5rem, 15vw, 15rem);
+.ag-cta-massive {
+    font-size: clamp(4rem, 12vw, 15rem);
     line-height: 0.8;
     letter-spacing: -0.05em;
-    margin-bottom: 4rem;
+    margin-bottom: var(--space-lg);
 }
 
-.x-cta-actions {
+.ag-cta-controls {
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
     justify-content: center;
+    gap: var(--space-md);
 }
 
-.x-btn {
-    padding: 24px 48px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: transform 0.3s ease, background 0.3s ease;
-    display: inline-block;
-}
-
-.x-btn:hover {
-    transform: scale(1.05);
-}
-
-.x-btn.primary {
-    background: #fff;
-    color: #000;
-}
-
-.x-btn.outline {
-    background: transparent;
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.3);
-}
-
-.x-btn:not(.primary):not(.outline) {
-    background: #000;
-    color: var(--brand-red);
-}
-
-/* Responsive fixes */
 @media (max-width: 768px) {
-    .x-process-step {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .x-suite-sticky {
-        padding: 5vh 5vw;
-    }
-
-    .x-manifesto {
-        padding: 10vh 5vw;
-    }
-
-    .x-manifesto-huge {
-        font-size: clamp(2.5rem, 8vw, 4rem);
-        margin: 1.5rem 0 3rem;
-    }
-
-    .x-manifesto-grid {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-    }
-
-    .x-clients {
-        padding: 10vh 5vw;
-    }
-
-    .x-clients-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .x-client-box {
-        padding: 2rem 1rem;
-        font-size: 1rem;
-    }
-
+    .ag-cta-controls { flex-direction: column; }
 }

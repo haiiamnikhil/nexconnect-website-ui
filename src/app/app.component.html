@@ -3,18 +3,24 @@
 </div>
 
 <nav class="navbar" [class.scrolled]="scrolled">
-  <div class="logo-container">
-    <img src="nexconnect_logo_single_white.png" alt="NexConnect" class="logo">
-  </div>
-  <button class="mobile-menu-btn" (click)="toggleMenu()">
-    <span class="material-icons">{{ menuOpen ? 'close' : 'menu' }}</span>
-  </button>
+  <div class="nav-container">
+    <a routerLink="/" class="logo-link" (click)="closeMenu()">
+      <span class="logo-text">NEXCONNECT</span>
+    </a>
 
-  <div class="nav-links" [class.open]="menuOpen">
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a>
-    <a routerLink="/products" routerLinkActive="active" (click)="closeMenu()">Products</a>
-    <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a>
-    <a routerLink="/admin/login" class="admin-link" (click)="closeMenu()">Admin</a>
+    <button class="mobile-menu-btn" (click)="toggleMenu()">
+      <div class="menu-icon-bars" [class.open]="menuOpen">
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+
+    <div class="nav-links" [class.open]="menuOpen">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a>
+      <a routerLink="/products" routerLinkActive="active" (click)="closeMenu()">Products</a>
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a>
+      <a routerLink="/admin/login" class="admin-link" (click)="closeMenu()">Admin</a>
+    </div>
   </div>
 </nav>
 
@@ -25,27 +31,33 @@
 </main>
 
 <footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-logo-row">
-      <img src="nexconnect_logo_single_white.png" alt="NexConnect" class="footer-logo">
-    </div>
-    <div class="footer-links-row">
-      <div class="footer-group">
+  <div class="footer-top">
+    <div class="footer-links-grid">
+      <div class="footer-col">
+        <span class="footer-label">EXPLORE</span>
+        <a routerLink="/products">Products</a>
         <a routerLink="/contact">Contact</a>
-        <a href="#">Press</a>
+        <a routerLink="/admin/login">Admin Access</a>
       </div>
-      <div class="footer-group">
-        <a href="#">Privacy &amp; Terms</a>
-        <a href="#">Careers</a>
+      <div class="footer-col">
+        <span class="footer-label">LEGAL</span>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
       </div>
-      <div class="footer-group">
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
-        <a href="#">YouTube</a>
+      <div class="footer-col">
+        <span class="footer-label">SOCIAL</span>
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a href="https://twitter.com" target="_blank">Twitter / X</a>
+        <a href="https://github.com" target="_blank">GitHub</a>
       </div>
     </div>
   </div>
+
+  <div class="footer-massive-brand">
+    <h1>NEXCONNECT</h1>
+  </div>
+
   <div class="footer-bottom">
-    <span>NexConnect Technologies, a software company. All rights reserved.</span>
+    <p>&copy; {{ currentYear || '2026' }} NexConnect Technologies. All rights reserved.</p>
   </div>
 </footer>
